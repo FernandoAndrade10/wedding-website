@@ -1,0 +1,14 @@
+[
+  {
+    "name": "John Doe",
+    "guests": ["John Doe", "Jane Doe", "Little John"]
+  },
+  {
+    "name": "Breanna Gonzalez",
+    "guests": ["Breanna Gonzalez"]
+  },
+  {
+    "name": "Fernando Andrade",
+    "guests": ["Fernando Andrade"]
+  }
+]

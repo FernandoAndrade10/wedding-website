@@ -1,0 +1,91 @@
+[
+  {
+    "name": "john doe",
+    "phone": "+12222222222",
+    "attending": "yes",
+    "dinner": "no",
+    "individualAttendance": {
+      "John Doe": {
+        "rsvp": "yes",
+        "dinner": "no"
+      },
+      "Jane Doe": {
+        "rsvp": "yes",
+        "dinner": "yes"
+      },
+      "Little John": {
+        "rsvp": "no",
+        "dinner": ""
+      }
+    },
+    "timeStamp": "2025-06-17T20:13:05.467Z"
+  },
+  {
+    "name": "john doe",
+    "phone": "+13233442701",
+    "attending": "yes",
+    "dinner": "no",
+    "individualAttendance": {
+      "John Doe": {
+        "rsvp": "yes",
+        "dinner": "no"
+      },
+      "Jane Doe": {
+        "rsvp": "yes",
+        "dinner": "yes"
+      },
+      "Little John": {
+        "rsvp": "no",
+        "dinner": ""
+      }
+    },
+    "timeStamp": "2025-06-17T16:27:52.706Z"
+  },
+  {
+    "name": "john doe",
+    "phone": "+15622064185",
+    "attending": "yes",
+    "dinner": "no",
+    "individualAttendance": {
+      "John Doe": {
+        "rsvp": "yes",
+        "dinner": "no"
+      },
+      "Jane Doe": {
+        "rsvp": "yes",
+        "dinner": "yes"
+      },
+      "Little John": {
+        "rsvp": "no",
+        "dinner": ""
+      }
+    },
+    "timeStamp": "2025-06-17T16:29:13.812Z"
+  },
+  {
+    "name": "breanna gonzalez",
+    "phone": "+13233442701",
+    "attending": "yes",
+    "dinner": "no",
+    "individualAttendance": {
+      "Breanna Gonzalez": {
+        "rsvp": "no",
+        "dinner": "yes"
+      }
+    },
+    "timeStamp": "2025-06-17T16:38:40.281Z"
+  },
+  {
+    "name": "fernando andrade",
+    "phone": "+15622064185",
+    "attending": "yes",
+    "dinner": "yes",
+    "individualAttendance": {
+      "Fernando Andrade": {
+        "rsvp": "yes",
+        "dinner": "yes"
+      }
+    },
+    "timeStamp": "2025-06-17T16:36:09.712Z"
+  }
+]

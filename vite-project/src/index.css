@@ -1,0 +1,47 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* tailwindcss v3+ support */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional global tweaks */
+body {
+  @apply bg-green-50 text-gray-800 antialiased;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+a {
+  @apply no-underline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+html, body, #root {
+  height: 100%;
+}
+
+@layer utilities {
+  .cutout-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
