@@ -8,6 +8,8 @@ if (!process.env.DATABASE_URL) {
     console.error("DATABASE_URL is missing. Set it in Vercel Backend Env Vars.");
 }
 
+console.log("DB HOST ACTUALLY USED:", process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL).host : "MISSING");
+
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
