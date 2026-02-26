@@ -7,13 +7,13 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-if (process.env.VERCEL !== "1") {
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
-}
+// if (process.env.VERCEL !== "1") {
+//     app.listen(PORT, () => {
+//         console.log(`Server running on port ${PORT}`);
+//     });
+// }
 
-module.exports = app;
+const { URL } = require("url");
 
 console.log("DATABASE_URL exists?", !!process.env.DATABASE_URL);
 if (process.env.DATABASE_URL) {
@@ -317,6 +317,8 @@ app.put('/api/admin/rsvps/:id', async (req, res) => {
     }
 });
 
-app.listen(5000, "0.0.0.0", () => {
-    console.log("Server running on port 5000");
-});
+module.exports = app;
+
+// app.listen(5000, "0.0.0.0", () => {
+//     console.log("Server running on port 5000");
+// });
