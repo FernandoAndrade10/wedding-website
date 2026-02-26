@@ -1,19 +1,10 @@
 /* eslint-env node */
-console.log("DB CONFIG USING DATABASE_URL?", !!process.env.DATABASE_URL);
-console.log("DB CONFIG URL PREFIX:", (process.env.DATABASE_URL || "").slice(0, 20));
+import pg from "pg";
+const { Pool } = pg;
 
-const { Pool } = require("pg");
-const { URL } = require("url");
-
-if (!process.env.DATABASE_URL) {
-    console.error("DATABASE_URL is missing. Set it in Vercel Backend Env Vars.");
-}
-
-console.log("DB HOST ACTUALLY USED:", process.env.DATABASE_URL ? new URL(process.env.DATABASE_URL).host : "MISSING");
-
-const pool = new Pool({
+export const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
-
-module.exports = pool;
