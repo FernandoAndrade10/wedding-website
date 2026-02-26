@@ -15,6 +15,15 @@ if (process.env.VERCEL !== "1") {
 
 module.exports = app;
 
+console.log("DATABASE_URL exists?", !!process.env.DATABASE_URL);
+if (process.env.DATABASE_URL) {
+    console.log("DATABASE_URL host:", new URL(process.env.DATABASE_URL).host);
+}
+console.log("DB_URL exists?", !!process.env.DB_URL);
+if (process.env.DB_URL) {
+    console.log("DB_URL host:", new URL(process.env.DB_URL).host);
+}
+
 const pool = require('./db');
 
 const { sendRsvpConfirmationSms } = require("./twilio");
