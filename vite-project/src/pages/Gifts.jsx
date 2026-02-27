@@ -45,7 +45,7 @@ export default function Gifts() {
             </div>
             {/* Cash Gift Options */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
-              <di4 className="flex flex-col items-center justify-center space-y-2" >
+              <div className="flex flex-col items-center justify-center space-y-2" >
                 <img 
                   src="/images/cash-icon.png"
                   className="w-16 h-16 object-contain mt-2"
@@ -54,7 +54,7 @@ export default function Gifts() {
                 />
                 <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="400">{giftsText[language].p3}</p>
                 <p className="text-sm text-gray-600 pb-8" data-aos="fade-down" data-aos-delay="500">{giftsText[language].p4}</p>
-              </di4>
+              </div>
             </div>
           </div>
         </section>

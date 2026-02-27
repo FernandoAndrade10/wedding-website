@@ -44,6 +44,8 @@ export default function RSVP() {
           DINNER_REQUIRED: "Please select a dinner option.",
           PARTY_SELECTION_REQUIRED: "Please select attendance for everyone in your party.",
           SERVER_ERROR: "Server error. Please try again later.",
+          PHONE_FORMAT: "Please enter a valid U.S. phone number format.",
+          RATE_LIMITED: "Too many attempts. Please wait a few minutes and try again.",
         },
       },
       es: {
@@ -81,6 +83,8 @@ export default function RSVP() {
           DINNER_REQUIRED: "Por favor selecciona una opción de cena.",
           PARTY_SELECTION_REQUIRED: "Por favor selecciona la asistencia de cada invitado en tu grupo.",
           SERVER_ERROR: "Error del servidor. Por favor inténtalo de nuevo más tarde.",
+          PHONE_FORMAT: "Por favor ingresa un formato válido de número telefónico de EE. UU.",
+          RATE_LIMITED: "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
         }
       },
       
@@ -289,7 +293,8 @@ export default function RSVP() {
           setMessage('');
           navigate('/confirmation');
         } else {
-          setMessage(data.error || 'Something went wrong.');
+          const key = data.error;
+          setMessage(rsvpText[language].errors[key] || 'Something went wrong.');
         }
       } catch (err) {
         console.error(err);
