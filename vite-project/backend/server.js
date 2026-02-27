@@ -7,23 +7,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// if (process.env.VERCEL !== "1") {
-//     app.listen(PORT, () => {
-//         console.log(`Server running on port ${PORT}`);
-//     });
-// }
-
-const { URL } = require("url");
-
-console.log("DATABASE_URL exists?", !!process.env.DATABASE_URL);
-if (process.env.DATABASE_URL) {
-    console.log("DATABASE_URL host:", new URL(process.env.DATABASE_URL).host);
-}
-console.log("DB_URL exists?", !!process.env.DB_URL);
-if (process.env.DB_URL) {
-    console.log("DB_URL host:", new URL(process.env.DB_URL).host);
-}
-
 const pool = require('./db');
 
 const { sendRsvpConfirmationSms } = require("./twilio");
@@ -112,7 +95,7 @@ app.post('/api/rsvp', async (req, res) => {
     try {
         // Search database for main guest
         const guestResult = await pool.query(
-            `SELECT * FROM guests WHERE LOWER(name) = LOWER($1)`,
+            `SELECT * FROM public.guests WHERE LOWER(name) = LOWER($1)`,
             [name.trim()]
         );
 
@@ -124,13 +107,13 @@ app.post('/api/rsvp', async (req, res) => {
 
         // Updata the phone in the guest table
         await pool.query(
-            `UPDATE guests SET phone = $1 WHERE id = $2`,
+            `UPDATE public.guests SET phone = $1 WHERE id = $2`,
             [normalizePhone, guest.id]
         );
 
         // Check for existing RSVP
         const rsvpResult = await pool.query(
-            `SELECT id FROM rsvps WHERE guest_id = $1`,
+            `SELECT id FROM public.rsvps WHERE guest_id = $1`,
             [guest.id]
         );
 
@@ -139,16 +122,16 @@ app.post('/api/rsvp', async (req, res) => {
         if (rsvpResult.rows.length > 0) {
             // Update RSVP info
             await pool.query(
-                `UPDATE rsvps
-                SET attending = $1, dinner = $2, individual_Attendance = $3, timestamp = CURRENT_TIMESTAMP
+                `UPDATE public.rsvps
+                SET attending = $1, dinner = $2, individual_attendance = $3, timestamp = CURRENT_TIMESTAMP
                 WHERE guest_id = $4`,
                 [isAttending, isAttendingDinner, jsonAttendance, guest.id]
             );
         } else {
             // Insert into a new RSVP
             await pool.query(
-                `INSERT INTO rsvps
-                (guest_id, attending, dinner, individual_Attendance)
+                `INSERT INTO public.rsvps
+                (guest_id, attending, dinner, individual_attendance)
                 VALUES ($1, $2, $3, $4)`,
                 [guest.id, isAttending, isAttendingDinner, jsonAttendance]
             ); 
@@ -185,8 +168,8 @@ app.post('/api/guest-check', async (req, res) => {
     try {
         // Locate guest by name
         const guestResult = await pool.query(
-            'SELECT * FROM guests WHERE LOWER(name) = LOWER($1)',
-            [name]
+            'SELECT * FROM public.guests WHERE LOWER(name) = LOWER($1)',
+            [name.trim()]
         );
 
         if (guestResult.rows.length === 0) {
@@ -197,27 +180,36 @@ app.post('/api/guest-check', async (req, res) => {
 
         // Retrieve houshold members
         const householdResult = await pool.query(
-            'SELECT name FROM guests WHERE household_id = $1',
+            'SELECT name FROM public.guests WHERE household_id = $1',
             [mainGuest.id]
         );
 
-        // Combine guest and houshold into one list if the guest is not a solo RSVP
-        let householdGuests;
+        let householdGuests = [mainGuest.name];
 
-        if (householdResult.rows.length === 0){
-            //Solo RSVP
-            householdGuests = [];
-        } else {
-            //Main RSVP + Household members
-            const householdNames = householdResult.rows.map(row => row.name);
-
-            // Add the Main Guest to the list only if they're not already included
-            householdGuests = householdNames.includes(mainGuest.name) ? householdNames : [mainGuest.name, ...householdNames];
+        if (householdResult.rows.length > 0) {
+            const householdNames = householdResult.rows.map(r => r.name);
+            householdGuests = householdNames.includes(mainGuest.name)
+                ? householdNames
+                : [mainGuest.name, ...householdNames];
         }
+        
+        // Combine guest and houshold into one list if the guest is not a solo RSVP
+        // let householdGuests;
+
+        // if (householdResult.rows.length === 0){
+        //     //Solo RSVP
+        //     householdGuests = [];
+        // } else {
+        //     //Main RSVP + Household members
+        //     const householdNames = householdResult.rows.map(row => row.name);
+
+        //     // Add the Main Guest to the list only if they're not already included
+        //     householdGuests = householdNames.includes(mainGuest.name) ? householdNames : [mainGuest.name, ...householdNames];
+        // }
 
         // Check for existing RSVP
         const rsvpResult = await pool.query(
-            'SELECT * FROM rsvps WHERE guest_id = $1',
+            'SELECT * FROM public.rsvps WHERE guest_id = $1',
             [mainGuest.id]
         );
 
@@ -240,8 +232,8 @@ app.get('/api/admin/rsvps', async (req, res) => {
     try {
         const result = await pool.query(`
             SELECT r.*, g.name, g.phone
-            FROM rsvps r
-            JOIN guests g ON r.guest_id = g.id
+            FROM public.rsvps r
+            JOIN public.guests g ON r.guest_id = g.id
         `);
 
         const data = result.rows.map(row => ({
@@ -270,7 +262,7 @@ app.delete('/api/admin/rsvp/:id', async (req, res) => {
 
     try {
         const result = await pool.query(`
-            DELETE FROM rsvps WHERE id = $1 RETURNING *`,
+            DELETE FROM public.rsvps WHERE id = $1 RETURNING *`,
             [rsvpId]
         );
 
@@ -294,16 +286,16 @@ app.put('/api/admin/rsvps/:id', async (req, res) => {
     try {
         // Update the phone number
         await pool.query(`
-            UPDATE guests
+            UPDATE public.guests
             SET phone = $1
-            WHERE id = (SELECT guest_id FROM rsvps WHERE id = $2)
+            WHERE id = (SELECT guest_id FROM public.rsvps WHERE id = $2)
             `,
             [phone, id]
         );
 
         // Update RSVP data
         await pool.query(`
-            UPDATE rsvps
+            UPDATE public.rsvps
             SET attending = $1, dinner = $2, timestamp = CURRENT_TIMESTAMP, contacted = $3, notes = $4
             WHERE id = $5
             `,
@@ -318,7 +310,3 @@ app.put('/api/admin/rsvps/:id', async (req, res) => {
 });
 
 module.exports = app;
-
-// app.listen(5000, "0.0.0.0", () => {
-//     console.log("Server running on port 5000");
-// });

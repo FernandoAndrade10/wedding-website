@@ -47,7 +47,7 @@ export default function Gifts() {
             <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
               <di4 className="flex flex-col items-center justify-center space-y-2" >
                 <img 
-                  src="/public/images/cash-icon.png"
+                  src="/images/cash-icon.png"
                   className="w-16 h-16 object-contain mt-2"
                   data-aos="fade-down"
                   data-aos-delay="300"
