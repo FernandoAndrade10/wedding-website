@@ -6,12 +6,11 @@ export default function AdminPanel() {
     const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
     const [rsvps, setRsvps] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filter, setFilter] = useState('all'); //all, yes, no = filter options
+    const [filter, setFilter] = useState('all');
     const [editEntry, setEditEntry] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOption, setSortOption] = useState('name-asc');
     
-    // Formatting for CSV download
     const headers = ["Name", "Phone", "Attending", "Dinner", "IndividualAttendance"];
 
     const rows = rsvps.map((entry) => [
@@ -28,13 +27,11 @@ export default function AdminPanel() {
         : '-'
     ]);
 
-    // Convert header and rows to strings and combine
     const headerLine = headers.join(',');
     const rowLines = rows.map(row => row.join(','));
     const csvContent = [headerLine, ...rowLines].join('\n');
 
     function handleDownload() {
-        // Create Blob and temp URL
         const csvBlob = new Blob([csvContent], { type: 'text/csv' });
         const csvUrl = URL.createObjectURL(csvBlob);
 
@@ -64,7 +61,6 @@ export default function AdminPanel() {
         fetchRsvps();
     }, []);
 
-    //Filters
     function filterRsvps ( rsvpList, filterChoice, search ) {
         return rsvpList.filter((entry) => {
             if (filterChoice === 'dinner') {
@@ -185,7 +181,6 @@ export default function AdminPanel() {
 
     const filteredRsvps = filterRsvps(rsvps, filter, searchTerm);
 
-    //Deletion function
     const handleDelete = async (rsvpId) => {
         if(!window.confirm("Are you sure you want to delete this RSVP?")) return;
 
@@ -208,7 +203,6 @@ export default function AdminPanel() {
         }
     };
 
-    //Edit function
     const handleEdit = (entry) => {
         setEditEntry({
             ...entry,
@@ -216,7 +210,6 @@ export default function AdminPanel() {
         });
     };
 
-    //Editted Submission
     const submitEdit = async () => {
         try {
             const response = await fetch(`${API_URL}/api/admin/rsvps/${editEntry.id}`, {
@@ -230,7 +223,6 @@ export default function AdminPanel() {
             if(response.ok) {
                 toast.success("RSVP Updated!");
 
-                //Refresh the RSVP list after updating
                 fetchRsvps();
                 setEditEntry(null);
             } else {
@@ -245,7 +237,7 @@ export default function AdminPanel() {
     return (
         <div className="relative min-h-screen pt-24 pb-24 px-6">
             <img 
-                src="../../public/images/bg-pastel.png"
+                src="/images/bg-pastel.png"
                 className="absolute inset-0 w-full h-full z-0"
             />
             <h2 className="relative text-2xl font-bold mb-4">
