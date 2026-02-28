@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { FaStickyNote, FaCheckCircle } from "react-icons/fa";
 
 export default function AdminPanel() {
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
     const [rsvps, setRsvps] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('all'); //all, yes, no = filter options
@@ -48,7 +49,7 @@ export default function AdminPanel() {
     
     async function fetchRsvps() {
         try {
-            const res = await fetch('http://localhost:5000/api/admin/rsvps');
+            const res = await fetch(`${API_URL}/api/admin/rsvps`);
             const data = await res.json();
 
             setRsvps(data);
@@ -189,7 +190,7 @@ export default function AdminPanel() {
         if(!window.confirm("Are you sure you want to delete this RSVP?")) return;
 
         try {
-            const res = await fetch(`http://localhost:5000/api/admin/rsvp/${rsvpId}`,{
+            const res = await fetch(`${API_URL}/api/admin/rsvp/${rsvpId}`,{
                 method: 'DELETE',
             });
 
@@ -218,7 +219,7 @@ export default function AdminPanel() {
     //Editted Submission
     const submitEdit = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/rsvps/${editEntry.id}`, {
+            const response = await fetch(`${API_URL}/api/admin/rsvps/${editEntry.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editEntry),
