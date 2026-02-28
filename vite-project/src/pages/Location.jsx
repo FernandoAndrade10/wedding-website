@@ -90,7 +90,7 @@ export default function Location() {
           <div className="w-20 h-1 bg-peach mx-auto rounded-full mb-8 relative" data-aos="fade-down" data-aos-delay="100"/>
           {/* Address */}
           <p className="relative text-gray-700 leading-relaxed mb-6" data-aos="fade-up" data-aos-delay="200">
-            <strong>Louisiana Room</strong><br />
+            <strong>SGV Event Center - Louisiana Room</strong><br />
             15900 Old Valley Blvd<br />
             La Puente, CA 91744
           </p>

@@ -143,8 +143,10 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-600">
                     <em>{homeText[language].ceremony}</em><br />
+                    St. Helen Catholic Church <br />
                     3170 Firestone Blvd, <br />South Gate, CA 90280<br /> <br />
                     <em>{homeText[language].reception}</em><br/>
+                    SGV Event Center - Louisiana Room <br />
                     15900 Old Valley Blvd, <br /> La Puente, CA 91744 <br />
                     <Link to="/location" className="text-peach underline hover:text-peach/80">
                       {homeText[language].location_link}

@@ -1,18 +1,23 @@
+import { Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 import Home from '../pages/Home';
-import RSVP from '../pages/RSVP';
-import Gallery from '../pages/Gallery';
-import About from '../pages/About';
-import Gifts from '../pages/Gifts';
-import Location from '../pages/Location';
-import Attire from '../pages/Attire';
-import NotFound from '../pages/NotFound';
-import Confirmation from '../pages/Confirmation';
-import AdminPanel from './AdminPanel';
-import Privacy from '../pages/Privacy';
-import Terms from '../pages/Terms';
+const RSVP = lazy(() => import('../pages/RSVP'));
+const Gallery = lazy(() => import('../pages/Gallery'));
+const About = lazy(() => import('../pages/About'));
+const Gifts = lazy(() => import('../pages/Gifts'));
+const Location = lazy(() => import('../pages/Location'));
+const Attire = lazy(() => import('../pages/Attire'));
+const NotFound = lazy(() => import('../pages/NotFound'));
+const Confirmation = lazy(() => import('../pages/Confirmation'));
+const AdminPanel = lazy(() => import('./AdminPanel'));
+const Privacy = lazy(() => import('../pages/Privacy'));
+const Terms = lazy(() => import('../pages/Terms'));
+
+function withSuspense(component) {
+  return <Suspense fallback={null}>{component}</Suspense>;
+}
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -20,18 +25,18 @@ export default function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/rsvp" element={<RSVP />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/gifts" element={<Gifts />} />
-        <Route path="/location" element={<Location />} />
-        <Route path="/attire" element={<Attire />} />
-        <Route path="/confirmation" element={<Confirmation />}/>
-        <Route path='/admin' element={<AdminPanel />} />
-        <Route path='/privacy' element={<Privacy />} />
-        <Route path='/terms' element={<Terms />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={withSuspense(<Home />)} />
+        <Route path="/rsvp" element={withSuspense(<RSVP />)} />
+        <Route path="/gallery" element={withSuspense(<Gallery />)} />
+        <Route path="/about" element={withSuspense(<About />)} />
+        <Route path="/gifts" element={withSuspense(<Gifts />)} />
+        <Route path="/location" element={withSuspense(<Location />)} />
+        <Route path="/attire" element={withSuspense(<Attire />)} />
+        <Route path="/confirmation" element={withSuspense(<Confirmation />)}/>
+        <Route path='/admin' element={withSuspense(<AdminPanel />)} />
+        <Route path='/privacy' element={withSuspense(<Privacy />)} />
+        <Route path='/terms' element={withSuspense(<Terms />)} />
+        <Route path="*" element={withSuspense(<NotFound />)} />
       </Routes>
     </AnimatePresence>
   );
