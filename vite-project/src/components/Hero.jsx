@@ -1,5 +1,5 @@
 import background from '/images/hero-bg.jpg';
-import scrollIcon from '../assets/images/scroll-down-rust2.svg';
+import scrollIcon from '../assets/images/scroll-down-rust.svg';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 
