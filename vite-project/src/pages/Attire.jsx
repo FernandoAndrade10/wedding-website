@@ -60,47 +60,15 @@ export default function Attire() {
           </p>
           {/* Color Palette */}
           <div className="mb-12" data-aos="zoom-in" data-aos-delay="350">
+            <p className="text-md text-rust font-bold italic mt-2" data-aos="fade-down" data-aos-delay="350">
+              {attireText[language].picCaption}
+            </p>
             <img
               src="/images/color-palette.jpg"
               alt="Guest Color Palette"
               className="mx-auto w-full sm:max-w-lg h-auto max-w-md rounded-lg shadow-lg"
             />
-            <p className="text-md text-rust font-bold italic mt-2" data-aos="fade-down" data-aos-delay="350">
-              {attireText[language].picCaption}
-            </p>
           </div>
-          {/* Inspo Board */}
-          {/* <div className="grid gap-12 md:grid-cols-2 text-left"> */}
-            {/* Women Inspo */}
-            {/* <div className="bg-white rounded-xl shadow-md p-6" data-aos="flip-left" data-aos-delay="400">
-              <h2 className="text-2xl font-semibold mb-6 text-mauve text-center">{attireText[language].inspoWomen}</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {[1,2,3,4].map((i) => (
-                  <img
-                    loading="lazy"
-                    key={i}
-                    src={`/images/inspo-women${i}.jpg`}
-                    alt={`Dress inspo ${i}`}
-                    className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                  />
-                ))}
-              </div>
-            </div> */}
-            {/* Men Inspo */}
-            {/* <div className="bg-white rounded-xl shadow-md p-6" data-aos="flip-left" data-aos-delay="400">
-              <h2 className="text-2xl font-semibold mb-6 text-mauve text-center">{attireText[language].inspoMen}</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {[1,2,3,4].map((i) =>(
-                  <img
-                    key={i}
-                    src={`/images/inspo-men${i}.jpg`}
-                    alt={`Men inspo ${i}`}
-                    className="rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-                  />
-                ))}
-              </div>
-            </div>
-          </div> */}
         </div>
         {/* Bottom Floral Divider */}
         <img
