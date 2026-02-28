@@ -15,6 +15,7 @@ export default function Navbar() {
             gifts: "Gifts",
             location: "Location",
             rsvp: "RSVP",
+            faq: "FAQ",
         },
         es: {
             home: "Inicio",
@@ -24,6 +25,7 @@ export default function Navbar() {
             gifts: "Regalos",
             location: "Ubicación",
             rsvp: "Confirmar asistencia",
+            faq: "Preguntas",
         },
     };
 
@@ -49,6 +51,7 @@ export default function Navbar() {
                     <li><Link to='/about' className='text-white hover:text-peach transition-colors'>{navLabels[language].about}</Link></li>
                     <li><Link to='/gifts' className='text-white hover:text-peach transition-colors'>{navLabels[language].gifts}</Link></li>
                     <li><Link to='/location' className='text-white hover:text-peach transition-colors'>{navLabels[language].location}</Link></li>
+                    <li><Link to='/faq' className='text-white hover:text-peach transition-colors'>{navLabels[language].faq}</Link></li>
                     <li><Link to='/attire' className='text-white hover:text-peach transition-colors'>{navLabels[language].attire}</Link></li>
                     <button
                         onClick={toggleLanguage}
@@ -93,6 +96,7 @@ export default function Navbar() {
                     <li><Link to='/about' onClick={() => setIsOpen(false)}>{navLabels[language].about}</Link></li>
                     <li><Link to='/gifts' onClick={() => setIsOpen(false)}>{navLabels[language].gifts}</Link></li>
                     <li><Link to='/location' onClick={() => setIsOpen(false)}>{navLabels[language].location}</Link></li>
+                    <li><Link to='/faq' onClick={() => setIsOpen(false)}>{navLabels[language].faq}</Link></li>
                     <li><Link to='/attire' onClick={() => setIsOpen(false)}>{navLabels[language].attire}</Link></li>
                     <li>
                         <button 

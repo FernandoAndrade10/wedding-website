@@ -9,6 +9,7 @@ const About = lazy(() => import('../pages/About'));
 const Gifts = lazy(() => import('../pages/Gifts'));
 const Location = lazy(() => import('../pages/Location'));
 const Attire = lazy(() => import('../pages/Attire'));
+const FAQ = lazy(() => import('../pages/FAQ'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 const Confirmation = lazy(() => import('../pages/Confirmation'));
 const AdminPanel = lazy(() => import('./AdminPanel'));
@@ -32,6 +33,7 @@ export default function AnimatedRoutes() {
         <Route path="/gifts" element={withSuspense(<Gifts />)} />
         <Route path="/location" element={withSuspense(<Location />)} />
         <Route path="/attire" element={withSuspense(<Attire />)} />
+        <Route path="/faq" element={withSuspense(<FAQ />)} />
         <Route path="/confirmation" element={withSuspense(<Confirmation />)}/>
         <Route path='/admin' element={withSuspense(<AdminPanel />)} />
         <Route path='/privacy' element={withSuspense(<Privacy />)} />
