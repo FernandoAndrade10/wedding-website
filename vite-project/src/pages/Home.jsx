@@ -23,6 +23,7 @@ export default function Home() {
       time: "Time",
       ceremony_time: "Ceremony begins at 12:30 PM",
       reception_time: "Reception to follow at 5:30 PM",
+      faq: "View FAQ",
       dress: "Dress Code",
       dress_details: "Garden formal attire is requested.",
       dress_details2: "Please avoid white and overly casual clothing.",
@@ -44,6 +45,7 @@ export default function Home() {
       time: "Tiempo",
       ceremony_time: "La ceremonia comienza a las 12:30 PM",
       reception_time: "La celebración de la recepción es a las 5:30 PM",
+      faq: "Ver las preguntas frecuentes",
       dress: "Código de Vestimenta",
       dress_details: "Se solicita vestimenta garden formal.",
       dress_details2: "Por favor evita el color blanco y la ropa demasiado casual.",
@@ -142,10 +144,10 @@ export default function Home() {
                     {homeText[language].location}
                   </h3>
                   <p className="text-gray-600">
-                    <em>{homeText[language].ceremony}</em><br />
+                    <em className="text-sage font-semibold text-lg">{homeText[language].ceremony}</em><br />
                     St. Helen Catholic Church <br />
                     3170 Firestone Blvd, <br />South Gate, CA 90280<br /> <br />
-                    <em>{homeText[language].reception}</em><br/>
+                    <em className="text-sage font-semibold text-lg">{homeText[language].reception}</em><br/>
                     SGV Event Center - Louisiana Room <br />
                     15900 Old Valley Blvd, <br /> La Puente, CA 91744 <br />
                     <Link to="/location" className="text-peach underline hover:text-peach/80">
@@ -164,6 +166,9 @@ export default function Home() {
                   <p className="text-gray-600">
                     {homeText[language].ceremony_time}<br /> {homeText[language].reception_time}
                   </p>
+                  <Link to="/faq" className="text-peach underline hover:text-peach/80">
+                      {homeText[language].faq}
+                  </Link>
                 </div>
               </div>
               {/* Dress Code */}
