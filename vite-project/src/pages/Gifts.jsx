@@ -27,10 +27,12 @@ export default function Gifts() {
         exit={{ opacity: 0, y: -20}}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-        <section className="min-h-screen pt-40 pb-24 px-6 text-mauve bg-white text-center">
+        <section className="relative min-h-[100dvh] pt-40 pb-24 px-6 text-mauve bg-white text-center overflow-hidden">
           <img
             src="/images/bg-pastel.png"
-            className="absolute inset-0 w-full h-full bg-cover opacity-80 z-0"
+            className="absolute inset-0 w-full h-full object-cover opacity-80 z-0"
+            alt=""
+            aria-hidden="true"
           />
           <div className="relative z-10">
             <h1 className="text-4xl md:text-5xl font-bold font-serif mb-4" data-aos="fade-down">
@@ -61,4 +63,3 @@ export default function Gifts() {
       </motion.div>
     );
   }
-  
