@@ -1,20 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
-const { URL } = require('url');
 const pool = require('./db');
 const { sendRsvpConfirmationSms } = require("./twilio");
 const app = express();
 app.set('trust proxy', 1);
 
+const galleryUploadFilePath = path.join(__dirname, 'galleryUploads.json');
+
 // Middleware
 app.use(
     cors({
         origin: true,
-        credentials: true
+        credentials: true,
 }));
-app.use(express.json());
+app.use(express.json({ limit: '8mb' }));
 
 function normalizePhoneNumber(phone) {
     const digits = String(phone).replace(/\D/g, '');
@@ -60,6 +63,25 @@ function createRouteRateLimiter({ windowMs, maxRequests }) {
         requestLog.set(key, recentTimestamps);
         next();
     };
+}
+
+function readGalleryUploads() {
+    try {
+        if (!fs.existsSync(galleryUploadFilePath)) {
+            fs.writeFileSync(galleryUploadFilePath, '[]', 'utf8');
+        }
+
+        const content = fs.readFileSync(galleryUploadFilePath, 'utf8');
+        const data = JSON.parse(content);
+        return Array.isArray(data) ? data : [];
+    } catch (err) {
+        console.error('Failed to read gallery uploads:', err.stack || err);
+        return [];
+    }
+}
+
+function writeGalleryUploads(data) {
+    fs.writeFileSync(galleryUploadFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
 function validateGuestCheckPayload(body) {
@@ -136,9 +158,56 @@ const rsvpLimiter = createRouteRateLimiter({
     maxRequests: 15,
 });
 
+const galleryUploadLimiter = createRouteRateLimiter({
+    windowMs: 10 * 60 * 1000,
+    maxRequests: 12,
+});
+
 // Test route
 app.get('/', (req, res) => {
     res.send('Server is up and running!');
+});
+
+app.get('/api/gallery-uploads', (req, res) => {
+    const uploads = readGalleryUploads();
+    const sortedUploads = uploads.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    res.status(200).json({ uploads: sortedUploads });
+});
+
+app.post('/api/gallery-uploads', galleryUploadLimiter, (req, res) => {
+    const { guestName, imageDataUrl } = req.body || {};
+
+    if (typeof guestName !== 'string' || !guestName.trim()) {
+        return res.status(400).json({ error: 'NAME_REQUIRED' });
+    }
+
+    if (typeof imageDataUrl !== 'string' || !imageDataUrl.startsWith('data:image/')) {
+        return res.status(400).json({ error: 'IMAGE_REQUIRED' });
+    }
+
+    if (imageDataUrl.length > 7000000) {
+        return res.status(400).json({ error: 'IMAGE_TOO_LARGE' });
+    }
+
+    const uploads = readGalleryUploads();
+
+    const newUpload = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        guestName: guestName.trim().slice(0, 80),
+        imageDataUrl,
+        createdAt: new Date().toISOString(),
+    };
+
+    uploads.unshift(newUpload);
+    const limited = uploads.slice(0, 300);
+
+    try {
+        writeGalleryUploads(limited);
+        return res.status(201).json({ upload: newUpload });
+    } catch (err) {
+        console.error('Failed to save gallery upload:', err.stack || err);
+        return res.status(500).json({ error: 'UPLOAD_SAVE_FAILED' });
+    }
 });
 
 // RSVP Handler
