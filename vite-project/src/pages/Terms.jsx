@@ -9,10 +9,12 @@ export default function Terms() {
             purpose: "Website Purpose",
             p2: "This website is intended for invited guests to submit RSVP information for our wedding.",
             sms: "SMS Communications",
-            smsP1: "By providing your phone number and submitting the RSVP form, you consent to receive SMS messages related to your RSVP and wedding details.",
-            smsP2: "Message frequency is limited.",
-            smsP3: "Message and data rates may apply.",
-            smsP4: "Reply STOP to opt out at any time.",
+            smsP1: "Program name: Fernando and Breanna Wedding SMS Updates.",
+            smsP2: "Program description: guests who opt in may receive RSVP confirmations, wedding reminders, event updates, and logistics messages.",
+            smsP3: "Message frequency varies, but is expected to be low. Message and data rates may apply.",
+            smsP4: "Reply STOP to unsubscribe at any time. Reply HELP for help.",
+            smsP5: "Carriers are not liable for any delayed or undelivered messages.",
+            smsP6: "SMS consent is optional and is not required to submit your RSVP. See our Privacy Policy for how mobile information and opt-in consent are handled.",
             use: "Acceptable Use",
             p3: "You agree to provide accurate information when submitting your RSVP and to use this website only for its intended purpose.",
             commercial: "No Commercial Use",
@@ -26,10 +28,12 @@ export default function Terms() {
             purpose: "Propósito del sitio web",
             p2: "Este sitio web está destinado a invitados para enviar su confirmación de asistencia (RSVP) a nuestra boda.",
             sms: "Comunicaciones por SMS",
-            smsP1: "Al proporcionar su número de teléfono y enviar el formulario de confirmación de asistencia, usted acepta recibir mensajes SMS relacionados con su RSVP y detalles de la boda.",
-            smsP2: "La frecuencia de los mensajes es limitada.",
-            smsP3: "Pueden aplicarse tarifas por mensajes y datos.",
-            smsP4: "Responda STOP para cancelar la suscripción en cualquier momento.",
+            smsP1: "Nombre del programa: Fernando and Breanna Wedding SMS Updates.",
+            smsP2: "Descripción del programa: los invitados que acepten pueden recibir confirmaciones de RSVP, recordatorios de la boda, actualizaciones del evento y mensajes de logística.",
+            smsP3: "La frecuencia de mensajes varía, pero se espera que sea baja. Pueden aplicarse tarifas por mensajes y datos.",
+            smsP4: "Responda STOP para cancelar la suscripción en cualquier momento. Responda HELP para obtener ayuda.",
+            smsP5: "Los operadores no son responsables de mensajes demorados o no entregados.",
+            smsP6: "El consentimiento para SMS es opcional y no es obligatorio para enviar su RSVP. Consulte nuestra Política de Privacidad para saber cómo se manejan la información móvil y el consentimiento de suscripción.",
             use: "Uso aceptable",
             p3: "Usted acepta proporcionar información precisa al enviar su confirmación de asistencia y utilizar este sitio web únicamente para su propósito previsto.",
             commercial: "Sin uso comercial",
@@ -62,7 +66,9 @@ export default function Terms() {
                 <p className="text-sm">{termsText[language].smsP1}</p>
                 <p className="text-sm">{termsText[language].smsP2}</p>
                 <p className="text-sm">{termsText[language].smsP3}</p>
-                <p className="text-sm">{termsText[language].smsP4}</p>
+                <p className="text-sm"><strong>{termsText[language].smsP4}</strong></p>
+                <p className="text-sm">{termsText[language].smsP5}</p>
+                <p className="text-sm">{termsText[language].smsP6}</p>
                 <br></br>
                 <h2 className="text-2xl md:text-3xl font-bold mb-2">
                     {termsText[language].use}

@@ -17,8 +17,8 @@ async function sendRsvpConfirmationSms({ to, name, language = "en" }) {
 
     const body =
         language === "es"
-            ? `Hola ${name}, recibimos tu confirmación (RSVP). ¡Gracias!`
-            : `Hi ${name}, we received your RSVP. Thank you!`;
+            ? `Fernando and Breanna Wedding: Hola ${name}, recibimos tu RSVP. Responde STOP para cancelar o HELP para ayuda.`
+            : `Fernando and Breanna Wedding: Hi ${name}, we received your RSVP. Reply STOP to unsubscribe or HELP for help.`;
 
     const message = await client.messages.create({
         to,

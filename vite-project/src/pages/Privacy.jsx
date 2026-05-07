@@ -16,11 +16,12 @@ export default function Privacy() {
             l4: "Managing wedding RSVPs",
             l5: "Sending confirmation or reminder messages related to the event",
             sms: "SMS Messaging",
-            smsP1: "If you provide a phone number, you may receive SMS messages related to your RSVP.",
-            smsP2: "Message frequency is low and limited to wedding-related notifications.",
+            smsP1: "If you opt in on the RSVP form, Fernando and Breanna Wedding may send SMS messages about your RSVP, wedding updates, reminders, or event logistics.",
+            smsP2: "Message frequency varies, but is expected to be low and limited to wedding-related notifications.",
             smsP3: "Message and data rates may apply.",
+            smsP4: "Reply STOP to unsubscribe or HELP for help.",
             dataSharing: "Data Sharing",
-            p5: "We do not sell, rent, or share your personal information with third parties for marketing purposes.",
+            p5: "We do not sell, rent, or share your personal information with third parties for marketing purposes. Mobile information and SMS opt-in consent are used only for wedding-related communications and will not be shared with third parties or affiliates for marketing or promotional purposes.",
             dataRetention: "Data Retention",
             p6: "Your information will be retained only as long as necessary for wedding planning purposes and will not be used after the event.",
             contact: "Contact",
@@ -39,11 +40,12 @@ export default function Privacy() {
             l4: "Gestionar las confirmaciones de asistencia a la boda",
             l5: "Enviar mensajes de confirmación o recordatorios relacionados con el evento",
             sms: "Mensajes SMS",
-            smsP1: "Si proporciona un número de teléfono, puede recibir mensajes SMS relacionados con su confirmación de asistencia.",
-            smsP2: "La frecuencia de los mensajes es baja y se limita a notificaciones relacionadas con la boda.",
+            smsP1: "Si acepta en el formulario de RSVP, Fernando and Breanna Wedding puede enviarle mensajes SMS sobre su RSVP, actualizaciones de la boda, recordatorios o detalles del evento.",
+            smsP2: "La frecuencia de mensajes varía, pero se espera que sea baja y limitada a notificaciones relacionadas con la boda.",
             smsP3: "Pueden aplicarse tarifas por mensajes y datos.",
+            smsP4: "Responda STOP para cancelar la suscripción o HELP para obtener ayuda.",
             dataSharing: "Uso compartido de datos",
-            p5: "No vendemos, alquilamos ni compartimos su información personal con terceros con fines de marketing.",
+            p5: "No vendemos, alquilamos ni compartimos su información personal con terceros con fines de marketing. La información móvil y el consentimiento de suscripción a SMS se usan solo para comunicaciones relacionadas con la boda y no se compartirán con terceros ni afiliados con fines de marketing o promocionales.",
             dataRetention: "Retención de datos",
             p6: "Su información se conservará solo durante el tiempo necesario para la planificación de la boda y no se utilizará después del evento.",
             contact: "Contacto",
@@ -69,14 +71,14 @@ export default function Privacy() {
             <p className="text-sm mb-2">{privacyText[language].p2}</p>
             <div className="text-sm">
                 <li>{privacyText[language].l1}</li>
-                <li>{privacyText[language].l3}</li>
+                <li>{privacyText[language].l2}</li>
                 <li>{privacyText[language].l3}</li>
             </div>
             <br></br>
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
                 {privacyText[language].h3}
             </h2>
-            <p className="text-sm">{privacyText[language.p3]}</p>
+            <p className="text-sm">{privacyText[language].p3}</p>
             <div className="text-sm">
                 <li>{privacyText[language].l4}</li>
                 <li>{privacyText[language].l5}</li>
@@ -89,6 +91,7 @@ export default function Privacy() {
                 <p>{privacyText[language].smsP1}</p>
                 <p>{privacyText[language].smsP2}</p>
                 <p>{privacyText[language].smsP3}</p>
+                <p>{privacyText[language].smsP4}</p>
             </div>
             <br></br>
             <h2 className="text-2xl md:text-3xl font-bold mb-4">{privacyText[language].dataSharing}</h2>

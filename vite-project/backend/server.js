@@ -217,7 +217,7 @@ app.post('/api/rsvp', rsvpLimiter, async (req, res) => {
         return res.status(400).json({ error: payloadError });
     }
 
-    const { name, phone, attending, dinner, individualAttendance, language } = req.body;
+    const { name, phone, attending, dinner, individualAttendance, language, smsConsent } = req.body;
     const normalizedPhone = normalizePhoneNumber(phone);
     const isAttending = attending === 'yes';
     const isAttendingDinner = dinner === 'yes' ? true : dinner === 'no' ? false : null;
@@ -254,18 +254,28 @@ app.post('/api/rsvp', rsvpLimiter, async (req, res) => {
 
     
 
-    try {
-        await sendRsvpConfirmationSms({
-        to: normalizedPhone,
-        name: name.trim(),
-        language,
+    if (smsConsent === true) {
+        console.log('SMS consent captured for RSVP confirmation', {
+            guestId: guest.id,
+            timestamp: new Date().toISOString(),
+            method: 'RSVP form checkbox',
         });
-        console.log('Confirmation SMS sent');
-        } catch (smsErr) {
-        console.error('Twilio SMS failed:', smsErr?.message || smsErr);
-        }
 
-        return res.status(200).json({ message: 'RSVP received!' });
+        try {
+            await sendRsvpConfirmationSms({
+                to: normalizedPhone,
+                name: name.trim(),
+                language,
+            });
+            console.log('Confirmation SMS sent');
+        } catch (smsErr) {
+                console.error('Twilio SMS failed:', smsErr?.message || smsErr);
+            }
+    } else {
+        console.log('SMS skipped because the guest did not opt in');
+    }
+    
+    return res.status(200).json({ message: 'RSVP received!' });
     } catch (err) {
         console.error('Error handling RSVP:', err.stack || err);
         return res.status(500).json({ error: 'RSVP_SAVE_FAILED' });

@@ -2,7 +2,7 @@ import { FaUser, FaPhone, FaHome, FaCheckCircle, FaTimesCircle, FaUtensils, FaId
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -26,6 +26,10 @@ export default function RSVP() {
         name: "Name",
         partyAttendance: "Attending",
         partyDinner: "Dinner",
+        smsConsent: "Yes, I agree to receive text messages from Fernando and Breanna Wedding about my RSVP, wedding reminders, event updates, and logistics at the mobile number provided.",
+        smsDisclosure: "Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. SMS consent is optional and is not required to submit your RSVP.",
+        privacyPolicy: "Privacy Policy",
+        termsOfService: "Terms of Service",
         success: {
           RSVP_SUCCESS: "",
           GUEST_NAME_FOUND: "Guest name found!",
@@ -65,6 +69,10 @@ export default function RSVP() {
         name: "Nombre",
         partyAttendance: "Asistirá",
         partyDinner: "Cena",
+        smsConsent: "Sí, acepto recibir mensajes de texto de Fernando and Breanna Wedding sobre mi RSVP, recordatorios de la boda, actualizaciones del evento y logística al número móvil proporcionado.",
+        smsDisclosure: "La frecuencia de mensajes varía. Pueden aplicarse tarifas por mensajes y datos. Responda STOP para cancelar la suscripción o HELP para obtener ayuda. El consentimiento para SMS es opcional y no es obligatorio para enviar su RSVP.",
+        privacyPolicy: "Política de Privacidad",
+        termsOfService: "Términos de Servicio",
         success: {
           RSVP_SUCCESS: "Thank you for your RSVP!",
           GUEST_NAME_FOUND: "¡Invitado encontrado!",
@@ -102,6 +110,7 @@ export default function RSVP() {
     const [individualAttendance, setIndividualAttendance] = useState({});
     const [dinner, setDinner] = useState('');
     const [isChecking, setIsChecking] = useState(false);
+    const [smsConsent, setSmsConsent] = useState(false);
 
     const attendanceRef = useRef(null);
     const navigate = useNavigate();
@@ -274,7 +283,7 @@ export default function RSVP() {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rsvp`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name.trim(), phone: normalizedPhone, attending, dinner, individualAttendance })
+          body: JSON.stringify({ name: name.trim(), phone: normalizedPhone, attending, dinner, individualAttendance, language, smsConsent })
         });
 
         const data = await res.json();
@@ -290,6 +299,7 @@ export default function RSVP() {
           setIsVerified(false);
           setLookupName('');
           setNameError('');
+          setSmsConsent(false);
           setMessage('');
           navigate('/confirmation');
         } else {
@@ -430,6 +440,31 @@ export default function RSVP() {
                   {phoneError && (
                     <p className='text-red-500 text-sm mt-2'>{phoneError}</p>
                   )}
+                </div>
+              )}
+
+              {isVerified && (
+                <div className="mb-4 rounded-md border border-mauve/20 bg-white/70 p-4 text-sm text-gray-700" data-aos="fade-up" data-aos-delay="350" data-aos-once="true">
+                  <label className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      name="smsConsent"
+                      checked={smsConsent}
+                      onChange={(e) => setSmsConsent(e.target.checked)}
+                      className="mt-1 accent-rust"
+                    />
+                    <span>{rsvpText[language].smsConsent}</span>
+                  </label>
+                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
+                    {rsvpText[language].smsDisclosure}{' '}
+                    <Link to="/privacy" className="font-semibold text-rust underline">
+                      {rsvpText[language].privacyPolicy}
+                    </Link>
+                    {' '}|{' '}
+                    <Link to="/terms" className="font-semibold text-rust underline">
+                      {rsvpText[language].termsOfService}
+                    </Link>
+                  </p>
                 </div>
               )}
               
