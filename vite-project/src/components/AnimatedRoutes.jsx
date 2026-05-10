@@ -15,6 +15,7 @@ const Confirmation = lazy(() => import('../pages/Confirmation'));
 const AdminPanel = lazy(() => import('./AdminPanel'));
 const Privacy = lazy(() => import('../pages/Privacy'));
 const Terms = lazy(() => import('../pages/Terms'));
+const TwilioOptInProof = lazy(() => import('../pages/TwilioOptInProof'));
 
 function withSuspense(component) {
   return <Suspense fallback={null}>{component}</Suspense>;
@@ -38,6 +39,7 @@ export default function AnimatedRoutes() {
         <Route path='/admin' element={withSuspense(<AdminPanel />)} />
         <Route path='/privacy' element={withSuspense(<Privacy />)} />
         <Route path='/terms' element={withSuspense(<Terms />)} />
+        <Route path='/twilio-opt-in-proof' element={withSuspense(<TwilioOptInProof />)} />
         <Route path="*" element={withSuspense(<NotFound />)} />
       </Routes>
     </AnimatePresence>
