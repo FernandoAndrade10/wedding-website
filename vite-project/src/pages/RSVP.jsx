@@ -1,4 +1,4 @@
-import { FaUser, FaPhone, FaHome, FaCheckCircle, FaTimesCircle, FaUtensils, FaIdBadge } from 'react-icons/fa';
+import { FaUser, FaPhone, FaHome, FaCheckCircle, FaTimesCircle, FaUtensils, FaIdBadge, FaKey } from 'react-icons/fa';
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from 'react';
@@ -13,6 +13,8 @@ export default function RSVP() {
         title: "RSVP",
         fullName: "Full Name",
         enterName: "Enter your full name",
+        accessCode: "Access Code",
+        enterAccessCode: "Enter your RSVP access code",
         nameValidation: "Guest not found on the list",
         checkRsvp: "Check RSVP",
         errorNameReq: "Name is required",
@@ -38,8 +40,10 @@ export default function RSVP() {
           NAME_REQUIRED: "Name is required",
           MISSING_FIELDS: "Name, Phone, and Attendance are required",
           PHONE_INVALID: "Please enter a valid U.S. phone number.",
-          GUEST_NOT_FOUND: "Guest not found on the list.",
-          GUEST_NOT_FOUND_DB: "Guest not found in the database.",
+          GUEST_NOT_FOUND: "Guest name or access code not found.",
+          GUEST_NOT_FOUND_DB: "Guest name or access code not found.",
+          ACCESS_CODE_REQUIRED: "Access code is required.",
+          PRIMARY_GUEST_REQUIRED: "Please have the primary invited guest for your household complete this RSVP.",
           INDIVIDUAL_INVALID: "Individual attendance data is missing or invalid.",
           ATTENDING_INVALID: "Attendance must be marked as yes or no.",
           DINNER_INVALID: "Dinner choice is invalid based on your attendance selection.",
@@ -56,6 +60,8 @@ export default function RSVP() {
         title: "RSVP",
         fullName: "Nombre Completo",
         enterName: "Ingresa tu nombre completo",
+        accessCode: "Código de Acceso",
+        enterAccessCode: "Ingresa tu código de RSVP",
         nameValidation: "Invitado no encontrado en la lista",
         checkRsvp: "Verificar RSVP",
         errorNameReq: "El nombre es obligatorio",
@@ -81,8 +87,10 @@ export default function RSVP() {
           NAME_REQUIRED: "El nombre es obligatorio",
           MISSING_FIELDS: "El nombre, teléfono y asistencia son obligatorios",
           PHONE_INVALID: "Por favor ingresa un número de teléfono válido de EE. UU.",
-          GUEST_NOT_FOUND: "Invitado no encontrado en la lista.",
-          GUEST_NOT_FOUND_DB: "El invitado no se encuentra en la base de datos.",
+          GUEST_NOT_FOUND: "El nombre del invitado o el código de acceso no se encontró.",
+          GUEST_NOT_FOUND_DB: "El nombre del invitado o el código de acceso no se encontró.",
+          ACCESS_CODE_REQUIRED: "El código de acceso es obligatorio.",
+          PRIMARY_GUEST_REQUIRED: "Por favor pide al invitado principal de tu hogar que complete este RSVP.",
           INDIVIDUAL_INVALID: "La información de asistencia individual falta o no es válida.",
           ATTENDING_INVALID: "La asistencia debe marcarse como sí o no.",
           DINNER_INVALID: "La opción de cena no es válida según tu selección de asistencia.",
@@ -104,6 +112,7 @@ export default function RSVP() {
     const [attending, setAttending] = useState('');
     const [message, setMessage] = useState('');
     const [lookupName, setLookupName] = useState('');
+    const [accessCode, setAccessCode] = useState('');
     const [household, setHousehold] = useState([]);
     const [nameError, setNameError] = useState('');
     const [isVerified, setIsVerified] = useState(false);
@@ -111,6 +120,7 @@ export default function RSVP() {
     const [dinner, setDinner] = useState('');
     const [isChecking, setIsChecking] = useState(false);
     const [smsConsent, setSmsConsent] = useState(false);
+
 
     const attendanceRef = useRef(null);
     const navigate = useNavigate();
@@ -167,7 +177,7 @@ export default function RSVP() {
         const res = await fetch(`${API_URL}/api/guest-check`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: lookupName }),
+        body: JSON.stringify({ name: lookupName, accessCode }),
         });
 
         const text = await res.text();
@@ -283,8 +293,7 @@ export default function RSVP() {
         const res = await fetch(`${import.meta.env.VITE_API_URL}/api/rsvp`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name: name.trim(), phone: normalizedPhone, attending, dinner, individualAttendance, language, smsConsent })
-        });
+          body: JSON.stringify({ name: name.trim(), phone: normalizedPhone, attending, dinner, individualAttendance, language, smsConsent, accessCode })        });
 
         const data = await res.json();
 
@@ -298,6 +307,7 @@ export default function RSVP() {
           setIndividualAttendance({});
           setIsVerified(false);
           setLookupName('');
+          setAccessCode('');
           setNameError('');
           setSmsConsent(false);
           setMessage('');
@@ -373,6 +383,25 @@ export default function RSVP() {
                   required
                 />
                 {!isVerified && (
+                  <div className="mt-4 text-left">
+                    <label htmlFor="accessCode" className="block text-sm font-medium text-gray-700 mb-1 italic">
+                      <FaKey className="inline mr-2 text-mauve"/>
+                      {rsvpText[language].accessCode}
+                    </label>
+                    <input
+                      type="text"
+                      id="accessCode"
+                      name="accessCode"
+                      value={accessCode}
+                      onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                      className="input-class-name w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-peach focus:border-peach uppercase"
+                      placeholder={rsvpText[language].enterAccessCode}
+                      autoComplete="one-time-code"
+                      required
+                    />
+                  </div>
+                )}
+                {!isVerified && (
                   <button
                     type='button'
                     className='mt-2 bg-peach text-white px-4 py-2 rounded-md hover:bg-peach/80 transition'
@@ -381,7 +410,6 @@ export default function RSVP() {
                     {rsvpText[language].checkRsvp}
                   </button>
                 )}
-                
               </div>
 
               { isVerified && (

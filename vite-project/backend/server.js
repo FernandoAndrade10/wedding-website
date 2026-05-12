@@ -84,10 +84,27 @@ function writeGalleryUploads(data) {
     fs.writeFileSync(galleryUploadFilePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
+function normalizeAccessCode(accessCode) {
+    return String(accessCode || '').trim().toUpperCase();
+}
+
+function accessCodeMatches(guest, accessCode) {
+    const submittedCode = normalizeAccessCode(accessCode);
+    const storedCode = normalizeAccessCode(guest?.access_code);
+
+    return Boolean(submittedCode && storedCode && submittedCode === storedCode);
+}
+
+function isPrimaryGuest(guest) {
+    return guest?.household_id === null || guest?.household_id === undefined;
+}
+
 function validateGuestCheckPayload(body) {
     if (!body || typeof body !== 'object') return 'NAME_REQUIRED';
     if (typeof body.name !== 'string') return 'NAME_REQUIRED';
     if (!body.name.trim()) return 'NAME_REQUIRED';
+    if (typeof body.accessCode !== 'string' || !body.accessCode.trim()) return 'ACCESS_CODE_REQUIRED';
+
     return null;
 }
 
@@ -96,7 +113,7 @@ function validateRsvpPayload(body) {
 
     if (!body || typeof body !== 'object') return 'MISSING_FIELDS';
 
-    const { name, phone, attending, dinner, individualAttendance } = body;
+    const { name, phone, attending, dinner, individualAttendance, accessCode } = body;
 
     if (!name || !phone || !attending) {
         return 'MISSING_FIELDS';
@@ -104,6 +121,10 @@ function validateRsvpPayload(body) {
 
     if (typeof name !== 'string' || !name.trim()) {
         return 'NAME_REQUIRED';
+    }
+
+    if (typeof accessCode !== 'string' || !accessCode.trim()) {
+        return 'ACCESS_CODE_REQUIRED';
     }
 
     if (typeof phone !== 'string') {
@@ -217,7 +238,7 @@ app.post('/api/rsvp', rsvpLimiter, async (req, res) => {
         return res.status(400).json({ error: payloadError });
     }
 
-    const { name, phone, attending, dinner, individualAttendance, language, smsConsent } = req.body;
+    const { name, phone, attending, dinner, individualAttendance, language, smsConsent, accessCode } = req.body;
     const normalizedPhone = normalizePhoneNumber(phone);
     const isAttending = attending === 'yes';
     const isAttendingDinner = dinner === 'yes' ? true : dinner === 'no' ? false : null;
@@ -229,7 +250,15 @@ app.post('/api/rsvp', rsvpLimiter, async (req, res) => {
         return res.status(400).json({ error: 'GUEST_NOT_FOUND_DB' });
         }
 
-        const guest = guestResult.rows[0];
+        const guest = guestResult.rows.find((row) => accessCodeMatches(row, accessCode));
+
+        if (!guest) {
+        return res.status(400).json({ error: 'GUEST_NOT_FOUND_DB' });
+        }
+
+        if (!isPrimaryGuest(guest)) {
+        return res.status(403).json({ error: 'PRIMARY_GUEST_REQUIRED' });
+        }
 
         await pool.query(`UPDATE guests SET phone = $1 WHERE id = $2`, [normalizedPhone, guest.id]);
 
@@ -251,8 +280,6 @@ app.post('/api/rsvp', rsvpLimiter, async (req, res) => {
             [guest.id, isAttending, isAttendingDinner, jsonAttendance],
         );
     }
-
-    
 
     if (smsConsent === true) {
         console.log('SMS consent captured for RSVP confirmation', {
@@ -290,6 +317,8 @@ app.post('/api/guest-check', guestCheckLimiter, async (req, res) => {
     }
 
     const name = req.body.name.trim();
+    const accessCode = req.body.accessCode.trim();
+
 
     try {
         const guestResult = await pool.query('SELECT * FROM guests WHERE LOWER(name) = LOWER($1)', [name]);
@@ -297,7 +326,15 @@ app.post('/api/guest-check', guestCheckLimiter, async (req, res) => {
         if (guestResult.rows.length === 0) {
             return res.status(404).json({ error: 'GUEST_NOT_FOUND' });
         }
-        const mainGuest = guestResult.rows[0];
+        const mainGuest = guestResult.rows.find((row) => accessCodeMatches(row, accessCode));
+
+        if (!mainGuest) {
+            return res.status(404).json({ error: 'GUEST_NOT_FOUND' });
+        }
+
+        if (!isPrimaryGuest(mainGuest)) {
+            return res.status(403).json({ error: 'PRIMARY_GUEST_REQUIRED' });
+        }
 
         const householdResult = await pool.query('SELECT name FROM guests WHERE household_id = $1', [mainGuest.id]);
 
