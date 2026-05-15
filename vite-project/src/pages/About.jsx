@@ -43,12 +43,12 @@ export default function About() {
   }
 
   const padrinos = [
-    { id: 1, name: 'Tio Sal and Tia Tania', bio: 'Padrinos de Boda', image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'Tio and Tia', bio: 'Padrinos de Lazo', image: '/images/placeholder2.jpg' },
-    { id: 3, name: 'Tio and Tia', bio: 'Padrinos de Anillos', image: '/images/placeholder3.jpg' },
-    { id: 4, name: 'Tio and Tia', bio: 'Padrinos de Arras', image: '/images/placeholder4.jpg' },
-    { id: 5, name: 'Tio and Tia', bio: 'Padrinos de Ramo', image: '/images/placeholder3.jpg' },
-    { id: 6, name: 'Tio and Tia', bio: 'Padrinos de Biblia y Rosario', image: '/images/placeholder2.jpg' },
+    { id: 1, name: 'Sal and Tania', bio: 'Padrinos de Boda', image: '/images/placeholder1.jpg' },
+    { id: 2, name: 'and', bio: 'Padrinos de Lazo', image: '/images/placeholder2.jpg' },
+    { id: 3, name: 'and', bio: 'Padrinos de Anillos', image: '/images/placeholder3.jpg' },
+    { id: 4, name: 'and', bio: 'Padrinos de Arras', image: '/images/placeholder4.jpg' },
+    { id: 5, name: 'and', bio: 'Padrinos de Ramo', image: '/images/placeholder3.jpg' },
+    { id: 6, name: 'and', bio: 'Padrinos de Biblia y Rosario', image: '/images/placeholder2.jpg' },
   ];
 
   const groomsmen = [
@@ -58,8 +58,10 @@ export default function About() {
     { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Dante', image: '/images/placeholder1.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
-    { id: 7, name: 'Chris', image: '/images/placeholder3.jpg' },
+    { id: 7, name: 'Anthony', image: '/images/placeholder3.jpg' },
     { id: 8, name: 'Dereck', image: '/images/placeholder4.jpg' },
+    { id: 9, name: 'Andres', image: '/images/placeholder4.jpg' },
+    { id: 10, name: 'Aaron', image: '/images/placeholder4.jpg' },
   ];
 
   const cardAnimations  = ['flip-left', 'flip-right', 'zoom-in', 'fade-up'];
@@ -144,7 +146,7 @@ export default function About() {
           <div className="relative text-center mt-12 text-mauve" 
             data-aos="fade-up" 
             data-aos-delay="100"
-            data-aos-duration="800"
+            data-aos-duration="300"
             data-aos-easing="ease-in-out"
           >
             <h2 className="font-semibold text-3xl pb-12">
@@ -171,8 +173,8 @@ export default function About() {
             {/* Bridesmaids */}
             <div className="relative text-center mt-12 text-mauve" 
               data-aos="fade-down" 
-              data-aos-delay="400" 
-              data-aos-duration="800"
+              data-aos-delay="200" 
+              data-aos-duration="400"
               data-aos-easing="ease-in-out"
             >
               <h2 className="font-semibold text-3xl pb-12">
