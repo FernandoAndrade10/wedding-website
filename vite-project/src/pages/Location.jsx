@@ -142,7 +142,7 @@ export default function Location() {
               </p>
             </div>
             {/* Hotels */}
-            <div data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
+            {/* <div data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
               <div className="flex items-center gap-2 mb-2">
                 <span aria-hidden="true">
                   <FaHotel className="text-sage w-6 h-6" />
@@ -157,7 +157,7 @@ export default function Location() {
               <p className="mt-2 text-sm text-gray-500">
                 *Hotels are listed for planning purposes and subject to change based on final venue location.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
