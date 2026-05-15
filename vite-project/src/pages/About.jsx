@@ -52,29 +52,29 @@ export default function About() {
   ];
 
   const groomsmen = [
-    { id: 1, name: 'Marcos', bio: partyText[language].cousin, image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'Carlos', bio: partyText[language].cousin, image: '/images/placeholder2.jpg' },
-    { id: 3, name: 'Tony', bio: partyText[language].broGroom, image: '/images/placeholder3.jpg' },
-    { id: 4, name: 'Jonathan', bio: partyText[language].broGroom, image: '/images/placeholder4.jpg' },
-    { id: 5, name: 'Dante', bio: partyText[language].broBride, image: '/images/placeholder1.jpg' },
-    { id: 6, name: 'Matthew', bio: partyText[language].broBride, image: '/images/matthew.jpg' },
-    { id: 7, name: 'Chris', bio: partyText[language].friendMale, image: '/images/placeholder3.jpg' },
-    { id: 8, name: 'Dereck', bio: partyText[language].friendMale, image: '/images/placeholder4.jpg' },
+    { id: 1, name: 'Marcos', image: '/images/placeholder1.jpg' },
+    { id: 2, name: 'Carlos', image: '/images/placeholder2.jpg' },
+    { id: 3, name: 'Tony', image: '/images/placeholder3.jpg' },
+    { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
+    { id: 5, name: 'Dante', image: '/images/placeholder1.jpg' },
+    { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
+    { id: 7, name: 'Chris', image: '/images/placeholder3.jpg' },
+    { id: 8, name: 'Dereck', image: '/images/placeholder4.jpg' },
   ];
 
   const cardAnimations  = ['flip-left', 'flip-right', 'zoom-in', 'fade-up'];
 
   const bridesmaids = [
-    { id: 1, name: 'Natalie' , bio: 'Sister', image: '/images/nat.jpg' },
-    { id: 2, name: 'Clarissa', bio: 'Sister', image: '/images/clarissa.jpg' },
-    { id: 3, name: 'Ellenie', bio: 'Friend', image: '/images/ellenie.jpg' },
-    { id: 4, name: 'Janet', bio: 'Friend', image: '/images/janet.jpg' },
-    { id: 5, name: 'Gabby', bio: 'Friend', image: '/images/gabby.jpg' },
-    { id: 6, name: 'Kenia', bio: 'Sister-In-Law', image: '/images/kenia.jpg' },
-    { id: 7, name: 'Marlene', bio: 'Sister-In-Law', image: '/images/marlene.png' },
-    { id: 8, name: 'Violet', bio: 'Sister-In-Law', image: '/images/violet.jpg' },
-    { id: 9, name: 'Julissa', bio: 'Sister-In-Law', image: '/images/juli.jpg' },
-    { id: 10, name: 'Sofia', bio: 'Sister-In-Law', image: '/images/sofia.jpg' },
+    { id: 1, name: 'Natalie' , image: '/images/nat.jpg' },
+    { id: 2, name: 'Clarissa', image: '/images/clarissa.jpg' },
+    { id: 3, name: 'Ellenie', image: '/images/ellenie.jpg' },
+    { id: 4, name: 'Janet', image: '/images/janet.jpg' },
+    { id: 5, name: 'Gabby', image: '/images/gabby.jpg' },
+    { id: 6, name: 'Kenia', image: '/images/kenia.jpg' },
+    { id: 7, name: 'Marlene', image: '/images/marlene.png' },
+    { id: 8, name: 'Violet', image: '/images/violet.jpg' },
+    { id: 9, name: 'Julissa', image: '/images/juli.jpg' },
+    { id: 10, name: 'Sofia', image: '/images/sofia.jpg' },
   ];
 
     return (
