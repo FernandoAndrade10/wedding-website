@@ -394,7 +394,7 @@ export default function RSVP() {
                       name="accessCode"
                       value={accessCode}
                       onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
-                      className="input-class-name w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-peach focus:border-peach uppercase"
+                      className="input-class-name w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-peach focus:border-peach"
                       placeholder={rsvpText[language].enterAccessCode}
                       autoComplete="one-time-code"
                       required
