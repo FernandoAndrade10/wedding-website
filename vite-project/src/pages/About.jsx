@@ -44,7 +44,7 @@ export default function About() {
 
   const padrinos = [
     { id: 1, name: 'Sal and Tania', bio: 'Padrinos de Boda', image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'and', bio: 'Padrinos de Lazo', image: '/images/placeholder2.jpg' },
+    { id: 2, name: 'Francisco and Rosi', bio: 'Padrinos de Aras', image: '/images/padrinos1.jpg' },
     { id: 3, name: 'and', bio: 'Padrinos de Anillos', image: '/images/placeholder3.jpg' },
     { id: 4, name: 'and', bio: 'Padrinos de Arras', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'and', bio: 'Padrinos de Ramo', image: '/images/placeholder3.jpg' },

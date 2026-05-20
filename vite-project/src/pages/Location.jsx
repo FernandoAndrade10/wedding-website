@@ -123,42 +123,6 @@ export default function Location() {
             referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          {/* Extra Details */}
-          <div className="relative mt-12 text-left text-gray-700 space-y-10 max-w-3xl mx-auto">
-            {/* Parking Info */}
-            <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true">
-              <div className="flex items-center gap-2 mb-2">
-                <span aria-hidden="true">
-                  <FaParking className="text-sage w-6 h-6"/>
-                </span>
-                <h2 className="text-2xl font-semibold text-mauve">
-                  Parking & Transportation
-                </h2>
-              </div>
-              <p>
-                Complimentary valet parking will be available at the venue.
-                Guests may also use rideshare apps (Uber, Lyft) for convenience.
-                If carpooling, please plan to arrive early to avoid delays.
-              </p>
-            </div>
-            {/* Hotels */}
-            {/* <div data-aos="fade-up" data-aos-delay="600" data-aos-once="true">
-              <div className="flex items-center gap-2 mb-2">
-                <span aria-hidden="true">
-                  <FaHotel className="text-sage w-6 h-6" />
-                </span>
-                <h2 className="text-2xl font-semibold text-mauve">Nearby Hotels</h2>
-              </div>
-              <ul className="list-disc list-inside space-y-2">
-                <li><span className="font-medium">The Langham Huntington</span> – 1401 S Oak Knoll Ave, Pasadena, CA</li>
-                <li><span className="font-medium">Courtyard by Marriott Pasadena</span> – 180 N Fair Oaks Ave, Pasadena, CA</li>
-                <li><span className="font-medium">Hyatt Place Pasadena</span> – 399 E Green St, Pasadena, CA</li>
-              </ul>
-              <p className="mt-2 text-sm text-gray-500">
-                *Hotels are listed for planning purposes and subject to change based on final venue location.
-              </p>
-            </div> */}
-          </div>
         </div>
       </section>
     </motion.div>
