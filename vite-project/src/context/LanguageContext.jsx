@@ -4,6 +4,10 @@ const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
     const [ language, setLanguage ] = useState(() => {
+        const languageParam = new URLSearchParams(window.location.search).get("lang");
+        if (languageParam === "es" || languageParam === "en") {
+            return languageParam;
+        }
         const savedLanguage = localStorage.getItem('language');
         return savedLanguage === 'es' ? 'es' : 'en';
     });

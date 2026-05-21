@@ -3,10 +3,6 @@ import { motion } from "framer-motion";
 import WeddingPartyCard from "../components/WeddingPartyCard";
 import { useLanguage } from "../context/LanguageContext";
 
-
-
-
-
 export default function About() {
   const { language } = useLanguage();
   const partyText = {
@@ -16,14 +12,18 @@ export default function About() {
       p1: "e are beyond blessed to be surrounded by an incredible group of friends and family.",
       p2: "Meet the people who will be standing beside us on our big day.",
       padrinos: "Godparents",
-      groomsmen: "Groomsmen",
-      bridesmaids: "Bridesmaids",
-      cousin: "Grooms Cousin",
-      broGroom: "Grooms Brother",
-      broBride: "Brides Brother",
-      friendFemale: "Friend",
-      friendMale: "Friend",
-      sisBride: "Brides Sister"
+      padrinosBodaLaso: "Wedding and Lasso Godparents",
+      padrinosAras: "Coin Godparents",
+      padrinosBibliaRosario: "Bible and Rosary Godparents",
+      padrinosAnillosPastel: "Ring and Cake Godparents",
+      padrinosCopas: "Cup Godparents",
+      padrinosCojines: "Pillow Godparents",
+      padrinosBrindis: "Toast Godparents",
+      padrinosFotosVestido: "Photo and Dress Godparents",
+      padrinosDj: "DJ Godparents",
+      padrinosRecuerdosMisa: "Mass Souvenir Godparents",
+      madrinaRamoNatural: "Natural Bouquet Godparent",
+      padrinosRecuerdosSalon: "Reception Souvenir Godparents",
     },
     es: {
       title: "La Corte Nupcial",
@@ -31,30 +31,34 @@ export default function About() {
       p1: "os sentimos inmensamente bendecidos de estar rodeados por un grupo increíble de amigos y familiares.",
       p2: "Conoce a las personas que estarán a nuestro lado en este día tan especial.",
       padrinos: "Padrinos",
-      groomsmen: "Caballeros de Honor",
-      bridesmaids: "Damas de Honor",
-      cousin: "Primo del Novio",
-      broGroom: "Hermano del Novio",
-      broBride: "Hermano de la Novia",
-      friendFemale: "Amiga",
-      friendMale: "Amigo",
-      sisBride: "Hermana de la Novia",
+      padrinosBodaLaso: "Padrinos de Boda y Laso",
+      padrinosAras: "Padrinos de Aras",
+      padrinosBibliaRosario: "Padrinos de Biblia y Rosario",
+      padrinosAnillosPastel: "Padrinos de Anillos y Pastel",
+      padrinosCopas: "Padrinos de Copas",
+      padrinosCojines: "Padrinos de Cojines",
+      padrinosBrindis: "Padrinos de Brindis",
+      padrinosFotosVestido: "Padrinos de Fotos y Vestido",
+      padrinosDj: "Padrinos de DJ",
+      padrinosRecuerdosMisa: "Padrinos de Recuerdos de Misa",
+      madrinaRamoNatural: "Madrina de Ramo Natural",
+      padrinosRecuerdosSalon: "Padrinos de Recuerdos de Salon",
     }
   }
 
   const padrinos = [
-    { id: 1, name: 'Sal and Tania', bio: 'Padrinos de Boda y Laso', image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'Francisco and Rosi', bio: 'Padrinos de Aras', image: '/images/padrinos1.jpg' },
-    { id: 3, name: 'Gerardo and Patricia', bio: 'Padrinos de Biblia y Rosario', image: '/images/placeholder3.jpg' },
-    { id: 4, name: 'Joel and Aracely', bio: 'Padrinos de Anillos y Pastel', image: '/images/placeholder4.jpg' },
-    { id: 5, name: 'Jorge and Claudia', bio: 'Padrinos de Copas', image: '/images/placeholder3.jpg' },
-    { id: 6, name: 'Marta and Tony', bio: 'Padrinos de Cojines', image: '/images/placeholder2.jpg' },
-    { id: 7, name: 'Maria and Patricio', bio: 'Padrinos de Brindis', image: '/images/placeholder1.jpg' },
-    { id: 8, name: 'Sergio and Arcadia', bio: 'Padrinos de Fotos y Vestido', image: '/images/padrinos1.jpg' },
-    { id: 9, name: 'Denise and Abraham', bio: 'Padrinos de DJ', image: '/images/placeholder3.jpg' },
-    { id: 10, name: 'Armida and Manny', bio: 'Padrinos de Recuerdos de Misa', image: '/images/placeholder4.jpg' },
-    { id: 11, name: 'Conchis', bio: 'Madrina de Ramo Natural', image: '/images/placeholder3.jpg' },
-    { id: 12, name: 'Marlene and Marcos', bio: 'Padrinos de Recuerdos de Salon', image: '/images/placeholder3.jpg' },
+    { id: 1, name: 'Sal and Tania', bioKey: 'padrinosBodaLaso', image: '/images/placeholder1.jpg' },
+    { id: 2, name: 'Francisco and Rosi', bioKey: 'padrinosAras', image: '/images/padrinos1.jpg' },
+    { id: 3, name: 'Gerardo and Patricia', bioKey: 'padrinosBibliaRosario', image: '/images/placeholder3.jpg' },
+    { id: 4, name: 'Joel and Aracely', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
+    { id: 5, name: 'Jorge and Claudia', bioKey: 'padrinosCopas', image: '/images/padrinos3.jpg' },
+    { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/placeholder2.jpg' },
+    { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/placeholder1.jpg' },
+    { id: 8, name: 'Sergio and Arcadia', bioKey: 'padrinosFotosVestido', image: '/images/padrinos2.jpg' },
+    { id: 9, name: 'Denise and Abraham', bioKey: 'padrinosDj', image: '/images/padrinos7.jpg' },
+    { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/placeholder4.jpg' },
+    { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/placeholder3.jpg' },
+    { id: 12, name: 'Marlene and Marcos', bioKey: 'padrinosRecuerdosSalon', image: '/images/padrinos5.jpg' },
   ];
 
   const groomsmen = [
@@ -138,7 +142,7 @@ export default function About() {
                 <WeddingPartyCard 
                   key={p.id}
                   name={p.name}
-                  bio={p.bio}
+                  bio={partyText[language][p.bioKey]}
                   image={p.image}
                   delay={i * 150 + 100}
                   animation={cardAnimations[i % cardAnimations.length]}
