@@ -43,12 +43,18 @@ export default function About() {
   }
 
   const padrinos = [
-    { id: 1, name: 'Sal and Tania', bio: 'Padrinos de Boda', image: '/images/placeholder1.jpg' },
+    { id: 1, name: 'Sal and Tania', bio: 'Padrinos de Boda y Laso', image: '/images/placeholder1.jpg' },
     { id: 2, name: 'Francisco and Rosi', bio: 'Padrinos de Aras', image: '/images/padrinos1.jpg' },
-    { id: 3, name: 'and', bio: 'Padrinos de Anillos', image: '/images/placeholder3.jpg' },
-    { id: 4, name: 'and', bio: 'Padrinos de Arras', image: '/images/placeholder4.jpg' },
-    { id: 5, name: 'and', bio: 'Padrinos de Ramo', image: '/images/placeholder3.jpg' },
-    { id: 6, name: 'and', bio: 'Padrinos de Biblia y Rosario', image: '/images/placeholder2.jpg' },
+    { id: 3, name: 'Gerardo and Patricia', bio: 'Padrinos de Biblia y Rosario', image: '/images/placeholder3.jpg' },
+    { id: 4, name: 'Joel and Aracely', bio: 'Padrinos de Anillos y Pastel', image: '/images/placeholder4.jpg' },
+    { id: 5, name: 'Jorge and Claudia', bio: 'Padrinos de Copas', image: '/images/placeholder3.jpg' },
+    { id: 6, name: 'Marta and Tony', bio: 'Padrinos de Cojines', image: '/images/placeholder2.jpg' },
+    { id: 7, name: 'Maria and Patricio', bio: 'Padrinos de Brindis', image: '/images/placeholder1.jpg' },
+    { id: 8, name: 'Sergio and Arcadia', bio: 'Padrinos de Fotos y Vestido', image: '/images/padrinos1.jpg' },
+    { id: 9, name: 'Denise and Abraham', bio: 'Padrinos de DJ', image: '/images/placeholder3.jpg' },
+    { id: 10, name: 'Armida and Manny', bio: 'Padrinos de Recuerdos de Misa', image: '/images/placeholder4.jpg' },
+    { id: 11, name: 'Conchis', bio: 'Madrina de Ramo Natural', image: '/images/placeholder3.jpg' },
+    { id: 12, name: 'Marlene and Marcos', bio: 'Padrinos de Recuerdos de Salon', image: '/images/placeholder3.jpg' },
   ];
 
   const groomsmen = [
