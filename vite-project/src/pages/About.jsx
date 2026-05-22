@@ -62,15 +62,15 @@ export default function About() {
   ];
 
   const groomsmen = [
-    { id: 1, name: 'Marcos', image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'Carlos', image: '/images/carlos.jpg' },
+    { id: 1, name: 'Marcos', image: '/images/marcos.jpg' },
+    { id: 2, name: 'Carlos', image: '/images/Carlos.jpg' },
     { id: 3, name: 'Tony', image: '/images/placeholder3.jpg' },
     { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Dante', image: '/images/placeholder1.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
     { id: 7, name: 'Anthony', image: '/images/placeholder3.jpg' },
     { id: 8, name: 'Dereck', image: '/images/placeholder4.jpg' },
-    { id: 9, name: 'Andres', image: '/images/andres.jpg' },
+    { id: 9, name: 'Andres', image: '/images/Andres.jpg' },
     { id: 10, name: 'Aaron', image: '/images/aaron.jpg' },
   ];
 
@@ -106,7 +106,7 @@ export default function About() {
           {/* Title */}
           <h1 className="relative font-serif font-semibold pt-32 text-center text-mauve text-5xl"
             data-aos="fade-down"
-            data-aos-duration="800"
+            data-aos-duration="300"
             data-aos-easing="ease-in-out"
           >
             {partyText[language].title}
@@ -114,7 +114,7 @@ export default function About() {
           <p className="relative pt-6 text-center text-gray-700 text-lg mx-auto"
             data-aos="fade-down" 
             data-aos-delay="100"
-            data-aos-duration="800"
+            data-aos-duration="300"
             data-aos-easing="ease-in-out"
           >
             <span className="text-peach font-bold text-3xl">{partyText[language].boldLetter}</span>{partyText[language].p1} <br /> {partyText[language].p2}
@@ -125,7 +125,7 @@ export default function About() {
           <div className="relative text-mauve text-center mt-12">
             <h2 className=" font-semibold text-3xl pb-12" 
               data-aos="fade-down" 
-              data-aos-duration="800"
+              data-aos-duration="300"
               data-aos-easing="ease-in-out"
             >
               {partyText[language].padrinos}
