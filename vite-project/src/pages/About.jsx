@@ -47,10 +47,10 @@ export default function About() {
   }
 
   const padrinos = [
-    { id: 1, name: 'Sal and Tania', bioKey: 'padrinosBodaLaso', image: '/images/placeholder1.jpg' },
+    { id: 1, name: 'Sal and Tania', bioKey: 'padrinosBodaLaso', image: '/images/padrinos4.jpg' },
     { id: 2, name: 'Francisco and Rosi', bioKey: 'padrinosAras', image: '/images/padrinos1.jpg' },
     { id: 3, name: 'Gerardo and Patricia', bioKey: 'padrinosBibliaRosario', image: '/images/placeholder3.jpg' },
-    { id: 4, name: 'Joel and Aracely', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
+    { id: 4, name: 'Joel and Araceli', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Jorge and Claudia', bioKey: 'padrinosCopas', image: '/images/padrinos3.jpg' },
     { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/placeholder2.jpg' },
     { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/placeholder1.jpg' },
@@ -63,15 +63,15 @@ export default function About() {
 
   const groomsmen = [
     { id: 1, name: 'Marcos', image: '/images/placeholder1.jpg' },
-    { id: 2, name: 'Carlos', image: '/images/placeholder2.jpg' },
+    { id: 2, name: 'Carlos', image: '/images/carlos.jpg' },
     { id: 3, name: 'Tony', image: '/images/placeholder3.jpg' },
     { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Dante', image: '/images/placeholder1.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
     { id: 7, name: 'Anthony', image: '/images/placeholder3.jpg' },
     { id: 8, name: 'Dereck', image: '/images/placeholder4.jpg' },
-    { id: 9, name: 'Andres', image: '/images/placeholder4.jpg' },
-    { id: 10, name: 'Aaron', image: '/images/placeholder4.jpg' },
+    { id: 9, name: 'Andres', image: '/images/andres.jpg' },
+    { id: 10, name: 'Aaron', image: '/images/aaron.jpg' },
   ];
 
   const cardAnimations  = ['flip-left', 'flip-right', 'zoom-in', 'fade-up'];
@@ -125,7 +125,6 @@ export default function About() {
           <div className="relative text-mauve text-center mt-12">
             <h2 className=" font-semibold text-3xl pb-12" 
               data-aos="fade-down" 
-              data-aos-delay="200"
               data-aos-duration="800"
               data-aos-easing="ease-in-out"
             >
@@ -135,7 +134,7 @@ export default function About() {
             {/* Card */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 mx-auto"
               data-aos="zoom-in"
-              data-aos-duration="800"
+              data-aos-duration="100"
               data-aos-easing="ease-in-out"
             >
               {padrinos.map((p, i) => (
@@ -155,8 +154,8 @@ export default function About() {
           {/* Groomsmen */}
           <div className="relative text-center mt-12 text-mauve" 
             data-aos="fade-up" 
-            data-aos-delay="100"
-            data-aos-duration="300"
+            data-aos-delay="50"
+            data-aos-duration="150"
             data-aos-easing="ease-in-out"
           >
             <h2 className="font-semibold text-3xl pb-12">
@@ -183,8 +182,8 @@ export default function About() {
             {/* Bridesmaids */}
             <div className="relative text-center mt-12 text-mauve" 
               data-aos="fade-down" 
-              data-aos-delay="200" 
-              data-aos-duration="400"
+              data-aos-delay="50" 
+              data-aos-duration="20s0"
               data-aos-easing="ease-in-out"
             >
               <h2 className="font-semibold text-3xl pb-12">
