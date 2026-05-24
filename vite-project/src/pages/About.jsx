@@ -53,7 +53,7 @@ export default function About() {
     { id: 4, name: 'Joel and Araceli', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Jorge and Claudia', bioKey: 'padrinosCopas', image: '/images/padrinos3.jpg' },
     { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/placeholder2.jpg' },
-    { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/placeholder1.jpg' },
+    { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/padrinos8.jpg' },
     { id: 8, name: 'Sergio and Arcadia', bioKey: 'padrinosFotosVestido', image: '/images/padrinos2.jpg' },
     { id: 9, name: 'Denise and Abraham', bioKey: 'padrinosDj', image: '/images/padrinos7.jpg' },
     { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/placeholder4.jpg' },
@@ -66,15 +66,16 @@ export default function About() {
     { id: 2, name: 'Carlos', image: '/images/Carlos.jpg' },
     { id: 3, name: 'Tony', image: '/images/placeholder3.jpg' },
     { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
-    { id: 5, name: 'Dante', image: '/images/placeholder1.jpg' },
+    { id: 5, name: 'Dante', image: '/images/dante.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
     { id: 7, name: 'Anthony', image: '/images/placeholder3.jpg' },
-    { id: 8, name: 'Dereck', image: '/images/placeholder4.jpg' },
+    { id: 8, name: 'Dereck', image: '/images/derick.jpg' },
     { id: 9, name: 'Andres', image: '/images/Andres.jpg' },
     { id: 10, name: 'Aaron', image: '/images/aaron.jpg' },
   ];
 
   const cardAnimations  = ['flip-left', 'flip-right', 'zoom-in', 'fade-up'];
+  const getCardDelay = (index) => Math.min(index * 60 + 40, 280);
 
   const bridesmaids = [
     { id: 1, name: 'Natalie' , image: '/images/nat.jpg' },
@@ -143,7 +144,7 @@ export default function About() {
                   name={p.name}
                   bio={partyText[language][p.bioKey]}
                   image={p.image}
-                  delay={i * 150 + 100}
+                  delay={getCardDelay(i)}
                   animation={cardAnimations[i % cardAnimations.length]}
                 />
               ))}
@@ -172,7 +173,7 @@ export default function About() {
                   name={g.name}
                   bio={g.bio}
                   image={g.image}
-                  delay={i * 150 + 100}
+                  delay={getCardDelay(i)}
                   animation={cardAnimations[i % cardAnimations.length]}
                 />
               ))}
@@ -198,7 +199,7 @@ export default function About() {
                     name={b.name}
                     bio={b.bio}
                     image={b.image}
-                    delay={i * 150 + 100}
+                    delay={getCardDelay(i)}
                     animation={cardAnimations[i % cardAnimations.length]}
                   />
                 ))}
