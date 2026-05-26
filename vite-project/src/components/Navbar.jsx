@@ -9,7 +9,7 @@ export default function Navbar() {
     const navLabels = {
         en: {
             home: "Home",
-            about: "About",
+            about: "Wedding Party",
             attire: "Attire",
             gallery: "Gallery",
             gifts: "Gifts",
@@ -19,7 +19,7 @@ export default function Navbar() {
         },
         es: {
             home: "Inicio",
-            about: "Padrinos",
+            about: "Corte Nupcial",
             attire: "Código de Vestimenta",
             gallery: "Galería",
             gifts: "Regalos",
@@ -48,7 +48,7 @@ export default function Navbar() {
                     <li><Link to='/' className='text-white hover:text-peach transition-colors'>{navLabels[language].home}</Link></li>
                     <li><Link to='/rsvp' className='text-white hover:text-peach transition-colors'>{navLabels[language].rsvp}</Link></li>
                     <li><Link to='/gallery' className='text-white hover:text-peach transition-colors'>{navLabels[language].gallery}</Link></li>
-                    <li><Link to='/about' className='text-white hover:text-peach transition-colors'>{navLabels[language].about}</Link></li>
+                    <li><Link to='/wedding-party' className='text-white hover:text-peach transition-colors'>{navLabels[language].about}</Link></li>
                     <li><Link to='/gifts' className='text-white hover:text-peach transition-colors'>{navLabels[language].gifts}</Link></li>
                     <li><Link to='/location' className='text-white hover:text-peach transition-colors'>{navLabels[language].location}</Link></li>
                     <li><Link to='/faq' className='text-white hover:text-peach transition-colors'>{navLabels[language].faq}</Link></li>
@@ -93,7 +93,7 @@ export default function Navbar() {
                     <li><Link to='/' onClick={() => setIsOpen(false)}>{navLabels[language].home}</Link></li>
                     <li><Link to='/rsvp' onClick={() => setIsOpen(false)}>{navLabels[language].rsvp}</Link></li>
                     <li><Link to='/gallery' onClick={() => setIsOpen(false)}>{navLabels[language].gallery}</Link></li>
-                    <li><Link to='/about' onClick={() => setIsOpen(false)}>{navLabels[language].about}</Link></li>
+                    <li><Link to='/wedding-party' onClick={() => setIsOpen(false)}>{navLabels[language].about}</Link></li>
                     <li><Link to='/gifts' onClick={() => setIsOpen(false)}>{navLabels[language].gifts}</Link></li>
                     <li><Link to='/location' onClick={() => setIsOpen(false)}>{navLabels[language].location}</Link></li>
                     <li><Link to='/faq' onClick={() => setIsOpen(false)}>{navLabels[language].faq}</Link></li>
