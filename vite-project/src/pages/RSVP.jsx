@@ -539,7 +539,7 @@ export default function RSVP() {
                   <label className='text-sm block font-medium text-gray-700 mb-2' data-aos="fade-up" data-aos-delay="500">
                     <FaUtensils className='inline-flex mr-2 text-mauve'/>
                     {rsvpText[language].dinner}
-                    <span className='text-sm text-gray-500'> (5:30pm - 7pm)</span>
+                    <span className='text-sm text-gray-500'> (6pm - 7pm)</span>
                   </label>
 
                   <div className='flex flex-col md:flex-row sm:flex-row sm:space-x-6' data-aos="fade-up" data-aos-delay>
