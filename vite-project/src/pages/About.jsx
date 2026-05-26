@@ -49,7 +49,7 @@ export default function About() {
   const padrinos = [
     { id: 1, name: 'Sal and Tania', bioKey: 'padrinosBodaLaso', image: '/images/padrinos4.jpg' },
     { id: 2, name: 'Francisco and Rosi', bioKey: 'padrinosAras', image: '/images/padrinos1.jpg' },
-    { id: 3, name: 'Gerardo and Patricia', bioKey: 'padrinosBibliaRosario', image: '/images/placeholder3.jpg' },
+    { id: 3, name: 'Gerardo and Patricia', bioKey: 'padrinosBibliaRosario', image: '/images/padrinos9.jpg' },
     { id: 4, name: 'Joel and Araceli', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Jorge and Claudia', bioKey: 'padrinosCopas', image: '/images/padrinos3.jpg' },
     { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/placeholder2.jpg' },
@@ -64,11 +64,11 @@ export default function About() {
   const groomsmen = [
     { id: 1, name: 'Marcos', image: '/images/marcos.jpg' },
     { id: 2, name: 'Carlos', image: '/images/Carlos.jpg' },
-    { id: 3, name: 'Tony', image: '/images/placeholder3.jpg' },
+    { id: 3, name: 'Tony', image: '/images/tony.jpg' },
     { id: 4, name: 'Jonathan', image: '/images/placeholder4.jpg' },
     { id: 5, name: 'Dante', image: '/images/dante.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
-    { id: 7, name: 'Anthony', image: '/images/placeholder3.jpg' },
+    { id: 7, name: 'Anthony', image: '/images/tono.jpg' },
     { id: 8, name: 'Dereck', image: '/images/derick.jpg' },
     { id: 9, name: 'Andres', image: '/images/Andres.jpg' },
     { id: 10, name: 'Aaron', image: '/images/aaron.jpg' },
