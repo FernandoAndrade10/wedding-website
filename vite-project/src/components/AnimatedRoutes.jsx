@@ -30,7 +30,7 @@ export default function AnimatedRoutes() {
         <Route path="/" element={withSuspense(<Home />)} />
         <Route path="/rsvp" element={withSuspense(<RSVP />)} />
         <Route path="/gallery" element={withSuspense(<Gallery />)} />
-        <Route path="/about" element={withSuspense(<About />)} />
+        <Route path="/wedding-party" element={withSuspense(<About />)} />
         <Route path="/gifts" element={withSuspense(<Gifts />)} />
         <Route path="/location" element={withSuspense(<Location />)} />
         <Route path="/attire" element={withSuspense(<Attire />)} />
