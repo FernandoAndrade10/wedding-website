@@ -11,6 +11,8 @@ export default function Gifts() {
       p2: "If you'd like to bless us with something extra, cash gifts are kindly appreciated to help us start this next chapter 💌",
       p3: "Cash gifts can be given at the wedding",
       p4: "We'll have a card box set up at the reception for your convenience",
+      zelleTitle: "Zelle gifting",
+      zelleBody: "If you'd prefer to send a gift digitally, you can send it via Zelle.",
     },
     es: {
       title: "Regalos",
@@ -18,6 +20,8 @@ export default function Gifts() {
       p2: "Si deseas bendecirnos con algo adicional, los obsequios en efectivo se agradecen con cariño para ayudarnos a comenzar este nuevo capítulo. 💌",
       p3: "Los obsequios en efectivo podrán entregarse el día de la boda.",
       p4: "Tendremos una caja para tarjetas en la recepción para tu comodidad.",
+      zelleTitle: "Regalo por Zelle",
+      zelleBody: "Si prefieres enviar tu regalo de forma digital, puedes hacerlo por Zelle.",
     },
   }
     return (
@@ -45,6 +49,20 @@ export default function Gifts() {
                 {giftsText[language].p2}
               </p>
             </div>
+            {/* Zelle Gift Options */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
+              <div className="flex flex-col items-center justify-center space-y-2" >
+                <img
+                    src="/images/cash-icon.png"
+                    className="w-16 h-16 object-contain mt-2"
+                    data-aos="fade-down"
+                    data-aos-delay="260"
+                  />
+                  <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="300">{giftsText[language].zelleTitle}</p>
+                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
+                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="380">Zelle (562)206-4185</p>
+              </div>
+            </div>
             {/* Cash Gift Options */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
               <div className="flex flex-col items-center justify-center space-y-2" >
@@ -54,8 +72,8 @@ export default function Gifts() {
                   data-aos="fade-down"
                   data-aos-delay="300"
                 />
-                <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="400">{giftsText[language].p3}</p>
-                <p className="text-sm text-gray-600 pb-8" data-aos="fade-down" data-aos-delay="500">{giftsText[language].p4}</p>
+                <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="340">{giftsText[language].p3}</p>
+                <p className="text-sm text-gray-600 pb-8" data-aos="fade-down" data-aos-delay="380">{giftsText[language].p4}</p>
               </div>
             </div>
           </div>

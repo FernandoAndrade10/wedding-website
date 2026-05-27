@@ -24,6 +24,8 @@ export default function About() {
       padrinosRecuerdosMisa: "Mass Souvenir Godparents",
       madrinaRamoNatural: "Natural Bouquet Godparent",
       padrinosRecuerdosSalon: "Reception Souvenir Godparents",
+      groomsmen: "Groomsmen",
+      bridesmaids: "Bridesmaids",
     },
     es: {
       title: "La Corte Nupcial",
@@ -43,6 +45,8 @@ export default function About() {
       padrinosRecuerdosMisa: "Padrinos de Recuerdos de Misa",
       madrinaRamoNatural: "Madrina de Ramo Natural",
       padrinosRecuerdosSalon: "Padrinos de Recuerdos de Salon",
+      groomsmen: "Padrinos",
+      bridesmaids: "Damas",
     }
   }
 
@@ -184,7 +188,7 @@ export default function About() {
             <div className="relative text-center mt-12 text-mauve" 
               data-aos="fade-down" 
               data-aos-delay="50" 
-              data-aos-duration="20s0"
+              data-aos-duration="200"
               data-aos-easing="ease-in-out"
             >
               <h2 className="font-semibold text-3xl pb-12">

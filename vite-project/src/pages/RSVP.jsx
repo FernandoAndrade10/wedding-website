@@ -414,7 +414,7 @@ export default function RSVP() {
 
               { isVerified && (
                 //Phone Number
-                <div className="mb-4" data-aos="fade-up" data-aos-delay="300" data-aos-once="true">
+                <div className="mb-4" data-aos="fade-up" data-aos-delay="140" data-aos-once="true">
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1 italic">
                     <FaPhone className='inline mr-2 text-mauve'/>
                     {rsvpText[language].phone}
@@ -472,7 +472,7 @@ export default function RSVP() {
               )}
 
               {isVerified && (
-                <div className="mb-4 rounded-md border border-mauve/20 bg-white/70 p-4 text-sm text-gray-700" data-aos="fade-up" data-aos-delay="350" data-aos-once="true">
+                <div className="mb-4 rounded-md border border-mauve/20 bg-white/70 p-4 text-sm text-gray-700" data-aos="fade-up" data-aos-delay="160" data-aos-once="true">
                   <label className="flex items-start gap-3">
                     <input
                       type="checkbox"
@@ -498,7 +498,7 @@ export default function RSVP() {
               
               {isVerified && (
                 //Attendance
-                <div className="mb-4" data-aos="fade-up" data-aos-delay="400" data-aos-once="true">
+                <div className="mb-4" data-aos="fade-up" data-aos-delay="180" data-aos-once="true">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <FaCheckCircle className='inline mr-2 text-mauve' />
                     {rsvpText[language].attendance}
@@ -536,7 +536,7 @@ export default function RSVP() {
               {/* Dinner Attendance */}
               {attending === 'yes' && (
                 <div className='mb-4'>
-                  <label className='text-sm block font-medium text-gray-700 mb-2' data-aos="fade-up" data-aos-delay="500">
+                  <label className='text-sm block font-medium text-gray-700 mb-2' data-aos="fade-up" data-aos-delay="220">
                     <FaUtensils className='inline-flex mr-2 text-mauve'/>
                     {rsvpText[language].dinner}
                     <span className='text-sm text-gray-500'> (6pm - 7pm)</span>
@@ -580,7 +580,7 @@ export default function RSVP() {
 
               {/* Display attendance options for the guest's household */}
               {household.length > 0 && (
-                <div className='mt-6 text-left' data-aos="fade-up" data-aos-delay="600">
+                <div className='mt-6 text-left' data-aos="fade-up" data-aos-delay="240">
                   <h3 className='text-lg font-semibold text-mauve mb-2'>
                     {rsvpText[language].party}
                   </h3>
@@ -704,7 +704,7 @@ export default function RSVP() {
         
               {isVerified && (
                 //Submit Button
-                <div className="text-center" data-aos="fade-up" data-aos-delay="700" data-aos-once="true">
+                <div className="text-center" data-aos="fade-up" data-aos-delay="260" data-aos-once="true">
                   <button
                     type="submit"
                     className="bg-peach hover:bg-peach/80 text-white font-semibold py-2 px-6 rounded-md transition-colors"

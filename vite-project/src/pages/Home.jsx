@@ -78,7 +78,7 @@ export default function Home() {
             <p
               className="max-w-2xl text-lg leading-relaxed mx-auto"
               data-aos="fade-in"
-              data-aos-delay="600"
+              data-aos-delay="180"
               >
               {homeText[language].p1}
               <br className="hidden md:block" />
@@ -87,7 +87,7 @@ export default function Home() {
             </p>
           </div>
           {/* Carousel */}
-          <div className="w-full md:w-2/3 lg:w-1/2" data-aos="slide-right" data-aos-delay="800" data-aos-once="true">
+          <div className="w-full md:w-2/3 lg:w-1/2" data-aos="slide-right" data-aos-delay="220" data-aos-once="true">
             <Carousel
               autoPlay
               infiniteLoop
@@ -97,7 +97,7 @@ export default function Home() {
               className="rounded-xl shadow-lg overflow-hidden"
             >
               <div>
-                <img src="/images/Our Story 1.jpg" alt="Memory 1" data-aos="slide-right" data-aos-delay="800"/>
+                <img src="/images/Our Story 1.jpg" alt="Memory 1" data-aos="slide-right" data-aos-delay="220"/>
               </div>
               <div>
                 <img src="/images/Our Story 2.jpg" alt="Memory 2" />
@@ -172,7 +172,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Dress Code */}
-              <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="300">
+              <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="180">
                 <FaTshirt className="text-mauve w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800">{homeText[language].dress}</h3>
@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
               </div>
               {/* Gifts */}
-              <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="400">
+              <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="220">
                 <FaGift className="text-mauve w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800">{homeText[language].gifts}</h3>
