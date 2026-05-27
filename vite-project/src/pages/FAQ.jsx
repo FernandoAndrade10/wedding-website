@@ -15,7 +15,7 @@ export default function FAQ() {
                     items: [
                         {
                             q: 'Will parking be available?',
-                            a: 'Yes. Complimentary valet parking will be available at the reception venue. Rideshare options like Uber and Lyft are also recommended.',
+                            a: 'Yes. Parking will be available at the venue, and a traffic control attendant will guide you to the appropriate parking area upon arrival.',
                         },
                         {
                             q: 'Should we plan extra travel time?',
@@ -82,7 +82,7 @@ export default function FAQ() {
                     items: [
                         {
                             q: '¿Habrá estacionamiento disponible?',
-                            a: 'Sí. Habrá valet parking de cortesía en la recepción. También recomendamos usar aplicaciones como Uber o Lyft.',
+                            a: 'Sí. Habrá estacionamiento disponible en el lugar y una persona de control de tráfico les indicará dónde estacionarse al llegar.',
                         },
                         {
                             q: '¿Debemos considerar tiempo extra de traslado?',
@@ -163,8 +163,15 @@ export default function FAQ() {
                     <p className="text-center text-gray-700 mb-10">{faqText[language].subtitle}</p>
 
                     <div className="space-y-8">
-                        {faqText[language].sections.map((section) => (
-                        <div key={section.title} className="bg-white/75 backdrop-blur-sm rounded-xl shadow-md border border-peach/20 p-6">
+                        {faqText[language].sections.map((section, sectionIndex) => (
+                        <div
+                            key={section.title}
+                            className="bg-white/75 backdrop-blur-sm rounded-xl shadow-md border border-peach/20 p-6"
+                            data-aos={sectionIndex % 2 === 0 ? 'fade-up' : 'fade-down'}
+                            data-aos-duration="350"
+                            data-aos-delay={Math.min(sectionIndex * 80, 320)}
+                            data-aos-easing="ease-in-out"
+                        >
                             <h2 className="text-2xl font-semibold text-mauve mb-4">{section.title}</h2>
                             <div className="space-y-4">
                                 {section.items.map((item) => (
