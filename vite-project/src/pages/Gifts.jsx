@@ -61,23 +61,29 @@ export default function Gifts() {
             <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
               <div className="flex flex-col items-center justify-center space-y-2" >
                 <img
-                    src="/images/cash-icon.png"
+                    src="/images/zelle.jpg"
                     className="w-16 h-16 object-contain mt-2"
                     data-aos="fade-down"
                     data-aos-delay="260"
                   />
                   <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="300">{giftsText[language].zelleTitle}</p>
-                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
-                  <p className="text-sm text-gray-600 px-6" data-aos="fade-down" data-aos-delay="380">Zelle:{zelleNumber}</p>
-                  <button
-                    type="button"
-                    onClick={handleCopyZelle}
-                    className="mb-8 mt-2 bg-peach text-white px-4 py-2 rounded-md shadow-md hover:bg-peach/90 transition hover:shadow-lg"
-                    data-aos="fade-down"
-                    data-aos-delay="400"
-                  >
-                    Copy Zelle Number
-                  </button>
+                  <p className="text-sm text-gray-600 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
+                  <div className="mb-8 mt-1 w-full px-6" data-aos="fade-down" data-aos-delay="380">
+                    <p className="text-xs uppercase tracking-[0.18em] text-gray-500 mb-2">Zelle</p>
+                    <div className="mx-auto max-w-xs rounded-xl border border-peach/40 bg-white px-3 py-2 shadow-sm">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-sm font-medium text-gray-700">{zelleNumber}</p>
+                        <button
+                          type="button"
+                          onClick={handleCopyZelle}
+                          className="inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-3 py-1 text-xs font-semibold text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
+                          aria-label="Copy Zelle number"
+                        >
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
             {/* Cash Gift Options */}
