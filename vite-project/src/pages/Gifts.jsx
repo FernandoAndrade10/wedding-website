@@ -1,9 +1,17 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Gifts() {
   const { language } = useLanguage();
+  const zelleNumber = "(562)206-4185";
+
+  const handleCopyZelle = () => {
+    const trimmedNumber = zelleNumber.replace(/\D/g, "");
+    navigator.clipboard.writeText(trimmedNumber);
+    toast.success("Copied!");
+  };
   const giftsText = {
     en: {
       title: "Gifts",
@@ -21,7 +29,7 @@ export default function Gifts() {
       p3: "Los obsequios en efectivo podrán entregarse el día de la boda.",
       p4: "Tendremos una caja para tarjetas en la recepción para tu comodidad.",
       zelleTitle: "Regalo por Zelle",
-      zelleBody: "Si prefieres enviar tu regalo de forma digital, puedes hacerlo por Zelle.",
+      zelleBody: "Para tu comodidad, también puedes enviar tu regalo de forma segura por Zelle.",
     },
   }
     return (
@@ -60,7 +68,16 @@ export default function Gifts() {
                   />
                   <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="300">{giftsText[language].zelleTitle}</p>
                   <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
-                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="380">Zelle:(562)206-4185</p>
+                  <p className="text-sm text-gray-600 px-6" data-aos="fade-down" data-aos-delay="380">Zelle:{zelleNumber}</p>
+                  <button
+                    type="button"
+                    onClick={handleCopyZelle}
+                    className="mb-8 mt-2 bg-peach text-white px-4 py-2 rounded-md shadow-md hover:bg-peach/90 transition hover:shadow-lg"
+                    data-aos="fade-down"
+                    data-aos-delay="400"
+                  >
+                    Copy Zelle Number
+                  </button>
               </div>
             </div>
             {/* Cash Gift Options */}

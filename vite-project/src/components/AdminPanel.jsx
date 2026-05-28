@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { FaStickyNote, FaCheckCircle } from "react-icons/fa";
 
@@ -10,9 +10,15 @@ export default function AdminPanel() {
     const [editEntry, setEditEntry] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOption, setSortOption] = useState('name-asc');
+    const [adminToken, setAdminToken] = useState(localStorage.getItem('adminToken') || '');
     
     const headers = ["Name", "Phone", "Attending", "Dinner", "IndividualAttendance"];
 
+    const authHeaders = useMemo(() => ({
+        "Content-Type": "application/json",
+        "x-admin-key": adminToken,
+    }), [adminToken]);
+    
     const rows = rsvps.map((entry) => [
         entry.name,
         entry.phone,
@@ -46,7 +52,7 @@ export default function AdminPanel() {
     
     async function fetchRsvps() {
         try {
-            const res = await fetch(`${API_URL}/api/admin/rsvps`);
+                        const res = await fetch(`${API_URL}/api/admin/rsvps`, { headers: authHeaders });
             const data = await res.json();
 
             setRsvps(data);
@@ -59,7 +65,7 @@ export default function AdminPanel() {
     
     useEffect(() => {
         fetchRsvps();
-    }, []);
+    }, [adminToken]);
 
     function filterRsvps ( rsvpList, filterChoice, search ) {
         return rsvpList.filter((entry) => {
@@ -187,6 +193,7 @@ export default function AdminPanel() {
         try {
             const res = await fetch(`${API_URL}/api/admin/rsvp/${rsvpId}`,{
                 method: 'DELETE',
+                headers: { 'x-admin-key': adminToken },
             });
 
             const data = await res.json();
@@ -214,7 +221,7 @@ export default function AdminPanel() {
         try {
             const response = await fetch(`${API_URL}/api/admin/rsvps/${editEntry.id}`, {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: authHeaders,
                 body: JSON.stringify(editEntry),
             });
 
@@ -244,7 +251,25 @@ export default function AdminPanel() {
                 RSVP Admin Panel
             </h2>
 
-            <div className="relative mb-4 space-x-2">
+            <div className="relative mb-4 bg-white/85 p-3 rounded-lg shadow max-w-xl">
+                <p className="text-sm text-gray-700 mb-2">Admin access key</p>
+                <div className="flex flex-col sm:flex-row gap-2">
+                    <input
+                        type="password"
+                        value={adminToken}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setAdminToken(value);
+                            localStorage.setItem('adminToken', value);
+                        }}
+                        className="w-full p-2 rounded border"
+                        placeholder="Enter admin key"
+                    />
+                    <button className="px-3 py-2 bg-mauve text-white rounded" onClick={fetchRsvps}>Refresh</button>
+                </div>
+            </div>
+
+            <div className="relative mb-4 flex flex-wrap gap-2">
                 <button
                     onClick={() => setFilter('all')}
                     className={`px-4 py-2 rounded ${filter === 'all' ? 'bg-mauve text-white' : 'bg-gray-200'}`}
@@ -321,7 +346,7 @@ export default function AdminPanel() {
                 <p className="relative">No RSVPs found</p>
                 ) : (
                 <>
-                    <table className="relative w-full border-collapse">
+                    <div className="relative overflow-x-auto max-w-full"><table className="w-full border-collapse min-w-[980px]">
                         <thead>
                             <tr className="bg-mauve text-white">
                                 <th className="p-2 border">Name</th>
@@ -385,7 +410,7 @@ export default function AdminPanel() {
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </table></div>
                     
                     {editEntry && (
                         <div className="fixed top-0 left-0 w-full h-full bg-black/40 flex justify-center items-center z-50">

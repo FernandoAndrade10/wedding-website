@@ -67,7 +67,7 @@ export default function Gallery() {
                 <button
                   type="button"
                   key={`${image.src}-${i}`}
-                  className="text-left group"
+                  className="text-left group block transform transition duration-300 hover:-translate-y-1"
                   onClick={() => {
                     setIndex(i);
                     setOpen(true);
@@ -77,7 +77,7 @@ export default function Gallery() {
                     loading='lazy'
                     src={image.src}
                     alt={`Gallery ${i + 1}`}
-                    className="rounded-lg shadow-md cursor-pointer group-hover:opacity-80 transition"
+                    className="rounded-lg shadow-md cursor-pointer group-hover:opacity-85 transition duration-300 group-hover:shadow-xl group-hover:ring-2 group-hover:ring-peach/40"
                   />
                 </button>
               ))}
