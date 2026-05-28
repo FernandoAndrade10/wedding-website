@@ -13,7 +13,7 @@ export default function About() {
       p2: "Meet the people who will be standing beside us on our big day.",
       padrinos: "Godparents",
       padrinosBodaLaso: "Wedding and Lasso Godparents",
-      padrinosAras: "Coin Godparents",
+      padrinosAras: "Wedding Coin Godparents",
       padrinosBibliaRosario: "Bible and Rosary Godparents",
       padrinosAnillosPastel: "Ring and Cake Godparents",
       padrinosCopas: "Cup Godparents",

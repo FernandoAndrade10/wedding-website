@@ -11,8 +11,8 @@ export default function Gifts() {
       p2: "If you'd like to bless us with something extra, cash gifts are kindly appreciated to help us start this next chapter 💌",
       p3: "Cash gifts can be given at the wedding",
       p4: "We'll have a card box set up at the reception for your convenience",
-      zelleTitle: "Zelle gifting",
-      zelleBody: "If you'd prefer to send a gift digitally, you can send it via Zelle.",
+      zelleTitle: "Zelle Registry",
+      zelleBody: "For your convenience, digital contributions can be sent securely via Zelle.",
     },
     es: {
       title: "Regalos",
@@ -60,7 +60,7 @@ export default function Gifts() {
                   />
                   <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="300">{giftsText[language].zelleTitle}</p>
                   <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
-                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="380">Zelle (562)206-4185</p>
+                  <p className="text-sm text-gray-600 pb-8 px-6" data-aos="fade-down" data-aos-delay="380">Zelle:(562)206-4185</p>
               </div>
             </div>
             {/* Cash Gift Options */}
