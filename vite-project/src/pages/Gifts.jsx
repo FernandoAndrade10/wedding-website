@@ -28,7 +28,7 @@ export default function Gifts() {
       p2: "Si deseas bendecirnos con algo adicional, los obsequios en efectivo se agradecen con cariño para ayudarnos a comenzar este nuevo capítulo. 💌",
       p3: "Los obsequios en efectivo podrán entregarse el día de la boda.",
       p4: "Tendremos una caja para tarjetas en la recepción para tu comodidad.",
-      zelleTitle: "Regalo digital",
+      zelleTitle: "Regalo Digital",
       zelleBody: "Para tu comodidad, también puedes enviar tu regalo de forma segura por Zelle.",
     },
   }
@@ -85,6 +85,7 @@ export default function Gifts() {
                       <div className="pt-3" aria-hidden="true" />
                     </div>
                   </div>
+              </div>
             </div>
             {/* Cash Gift Options */}
             <div className="bg-white/70 backdrop-blur-sm rounded-lg shadow-lg max-w-md border border-peach/30 mx-auto mt-12">
