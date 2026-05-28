@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 import { FaStickyNote, FaCheckCircle } from "react-icons/fa";
 
@@ -27,7 +27,7 @@ export default function AdminPanel() {
         entry.individual_attendance
             ? Object.entries(entry.individual_attendance)
             .map(([guestName, { rsvp, dinner }]) => {
-                return `${guestName.name}: ${rsvp} (${dinner || '-'})`
+                return `${guestName}: ${rsvp} (${dinner || '-'})`
             })
             .join('; ')
         : '-'
@@ -50,22 +50,27 @@ export default function AdminPanel() {
         URL.revokeObjectURL(csvUrl);
     }
     
-    async function fetchRsvps() {
+    const fetchRsvps = useCallback(async () => {
         try {
                         const res = await fetch(`${API_URL}/api/admin/rsvps`, { headers: authHeaders });
             const data = await res.json();
 
-            setRsvps(data);
+            if (!res.ok) {
+                throw new Error(data?.error || 'Failed to load RSVPs');
+            }
+
+            setRsvps(Array.isArray(data) ? data : []);
             setLoading(false);
         } catch (err) {
             console.error("Error fetching RSVPs:", err);
+            toast.error(err.message || 'Error loading RSVPs');
             setLoading(false);
         }
-    }
+    }, [API_URL, authHeaders]);
     
     useEffect(() => {
         fetchRsvps();
-    }, [adminToken]);
+    }, [fetchRsvps]);
 
     function filterRsvps ( rsvpList, filterChoice, search ) {
         return rsvpList.filter((entry) => {

@@ -416,7 +416,7 @@ app.get('/api/admin/rsvps', requireAdminAuth, async (req, res) => {
 });
 
 // Admin RSVP Deletion
-app.delete('/api/admin/rsvp/:id', async (req, res) => {
+app.delete('/api/admin/rsvp/:id', requireAdminAuth, async (req, res) => {
     const rsvpId = req.params.id;
 
     try {
