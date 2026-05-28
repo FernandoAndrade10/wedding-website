@@ -75,7 +75,7 @@ export default function Gifts() {
                       <button
                         type="button"
                         onClick={handleCopyZelle}
-                        className="inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
+                        className="inline-flex items-center rounded-full border border-peach/40 bg-peach text-white px-3 py-1 text-xs font-semibold uppercase tracking-wide transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
                         aria-label="Copy Zelle number"
                       >
                         Copy

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
     return (
       <footer className="bg-mauve text-white py-6 px-6 text-sm">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-6xl mx-auto flex flex-row flex-wrap justify-center items-center gap-x-4 gap-y-2">
 
           {/* Logo */}
           <div className="text-xl font-serif font-semibold tracking-wide bg-white text-mauve px-4 py-1 rounded">
@@ -24,9 +24,11 @@ export default function Footer() {
           </a>
 
           {/* Terms and Privacy */}
-          <Link to="/privacy">Privacy Policy</Link>
-          {" | "}
-          <Link to="/terms">Terms of Service</Link>
+          <div className="flex items-center gap-2 whitespace-nowrap">
+            <Link to="/privacy">Privacy Policy</Link>
+            <span aria-hidden="true">|</span>
+            <Link to="/terms">Terms of Service</Link>
+          </div>
 
           {/* Copyright */}
           <p className="text-xs text-gray-700">
