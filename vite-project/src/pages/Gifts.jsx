@@ -70,20 +70,15 @@ export default function Gifts() {
                   <p className="text-sm text-gray-600 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
                   <div className="mb-8 mt-1 w-full px-6" data-aos="fade-down" data-aos-delay="380">
                     <p className="text-xs uppercase tracking-[0.18em] text-gray-500 mb-2">Send to</p>
-                    <div className="mx-auto max-w-xs rounded-xl border border-peach/40 bg-white px-3 py-2 shadow-sm">
-                      <div className="flex items-center justify-between gap-2">
-                        <p className="text-sm font-medium text-gray-700">{zelleNumber}</p>
-                        <button
-                          type="button"
-                          onClick={handleCopyZelle}
-                          className="inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
-                          aria-label="Copy Zelle number"
-                        >
-                          Copy
-                        </button>
-                      </div>
-                      <div className="pt-3" aria-hidden="true" />
-                    </div>
+                    <p className="text-sm font-medium text-gray-700">{zelleNumber}</p>
+                    <button
+                      type="button"
+                      onClick={handleCopyZelle}
+                      className="mt-3 inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
+                      aria-label="Copy Zelle number"
+                    >
+                      Copy
+                    </button>
                   </div>
               </div>
             </div>
