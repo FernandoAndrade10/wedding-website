@@ -68,13 +68,13 @@ export default function Gifts() {
                   />
                   <p className="font-semibold text-lg pb-2" data-aos="fade-down" data-aos-delay="300">{giftsText[language].zelleTitle}</p>
                   <p className="text-sm text-gray-600 px-6" data-aos="fade-down" data-aos-delay="340">{giftsText[language].zelleBody}</p>
-                  <div className="mb-8 mt-1 w-full px-6" data-aos="fade-down" data-aos-delay="380">
-                    <p className="text-xs uppercase tracking-[0.18em] text-gray-500 mb-2">Send to</p>
-                    <p className="text-sm font-medium text-gray-700">{zelleNumber}</p>
+                  <div className="flex flex-wrap items-center justify-center gap-2 text-sm" data-aos="fade-down" data-aos-delay="380">
+                    <p className="text-sage text-xs uppercase tracking-[0.18em]">Send to</p>
+                    <p className="italic font-medium text-gray-700">{zelleNumber}</p>
                     <button
                       type="button"
                       onClick={handleCopyZelle}
-                      className="mt-3 inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
+                      className="inline-flex items-center rounded-full border border-peach/40 bg-peach/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-mauve transition hover:bg-peach/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-peach/60"
                       aria-label="Copy Zelle number"
                     >
                       Copy
