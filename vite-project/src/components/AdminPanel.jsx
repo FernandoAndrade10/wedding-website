@@ -51,8 +51,10 @@ export default function AdminPanel() {
     }
     
     const fetchRsvps = useCallback(async () => {
+        setLoading(true);
+        
         try {
-                        const res = await fetch(`${API_URL}/api/admin/rsvps`, { headers: authHeaders });
+            const res = await fetch(`${API_URL}/api/admin/rsvps`, { headers: authHeaders });
             const data = await res.json();
 
             if (!res.ok) {
@@ -167,28 +169,35 @@ export default function AdminPanel() {
     }
 
     // RSVP and Dinner Attendance totals
-    function calcTotals (rsvp, option) {
-        const total = rsvp.reduce((count, entry) => {
-            if (option === 'rsvp' || option === 'dinner') {
-                if (entry.individual_attendance && Object.keys(entry.individual_attendance).length > 0) {
-                    const yes = Object.entries(entry.individual_attendance).filter(([, guest]) => guest[option] === "yes")
-                    return count + yes.length;
+    function calcTotals (rsvpList) {
+        return rsvpList.reduce(
+            (acc, entry) => {
+                const individualAttendance = entry.individual_attendance;
+
+                if (
+                    individualAttendance
+                    && typeof individualAttendance === 'object'
+                    && Object.keys(individualAttendance).length > 0
+                ) {
+                    const guests = Object.values(individualAttendance);
+                    acc.rsvp += guests.filter((guest) => guest?.rsvp === 'yes').length;
+                    acc.dinner += guests.filter((guest) => guest?.dinner === 'yes').length;
+                    return acc;
                 }
-            }
+                if (entry.attending === true || entry.attending === 'yes') {
+                            acc.rsvp += 1;
+                }
 
-            return count;
-        }, 0)
-
-        return total;
+                if (entry.dinner === true || entry.dinner === 'yes') {
+                        acc.dinner += 1;
+                }
+                return acc;
+            },
+        { rsvp: 0, dinner: 0 },
+    );
     }
 
-    const calcTotalDinners = filterRsvps(rsvps)
-    
-    const calcTotalRsvps = filterRsvps(rsvps, 'yes', '');
-
-    const totalGuestsRsvps = calcTotals(rsvps, 'rsvp');
-
-    const totalDinners = calcTotals(rsvps, 'dinner');
+    const totals = calcTotals(rsvps);
 
     const filteredRsvps = filterRsvps(rsvps, filter, searchTerm);
 
@@ -478,12 +487,12 @@ export default function AdminPanel() {
             )}
             <div className="relative mt-6 bg-white p-2 flex space-x-2 items-center px-6 w-48 rounded shadow">
                 <h1 className="text-sm font-semibold">Total Attending RSVPs: </h1>
-                <span className="text-3xl text-peach font-bold">{calcTotalRsvps.length + totalGuestsRsvps}</span>
+                <span className="text-3xl text-peach font-bold">{totals.rsvp}</span>
             </div>
 
             <div className="relative mt-6 bg-white p-2 flex space-x-2 items-center px-6 w-48 rounded shadow">
                 <h1 className="text-sm font-semibold">Total Attending Dinner: </h1>
-                <span className="text-3xl text-peach font-bold">{calcTotalDinners.length + totalDinners}</span>
+                <span className="text-3xl text-peach font-bold">{totals.dinner}</span>
             </div>
             
             <div className="relative pt-8">
