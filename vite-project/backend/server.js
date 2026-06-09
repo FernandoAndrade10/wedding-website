@@ -365,7 +365,7 @@ app.post('/api/guest-check', guestCheckLimiter, async (req, res) => {
 });
 
 // RSVP Admin Page
-app.get('/api/admin/rsvps', requireAdminAuth, async (req, res) => {
+app.get('/api/admin/rsvps', async (req, res) => {
     try {
         const result = await pool.query(`
             SELECT r.*, g.name, g.phone

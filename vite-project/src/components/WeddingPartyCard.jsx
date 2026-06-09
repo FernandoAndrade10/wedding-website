@@ -1,4 +1,4 @@
-function WeddingPartyCard({ name, bio, image, delay, animation }) {
+function WeddingPartyCard({ name, bio, image, delay, animation, imageFit = "cover" }) {
     return (
         <section className="bg-white/80 p-4 rounded-lg shadow space-y-2 overflow-hidden" 
             data-aos={animation}
@@ -11,7 +11,7 @@ function WeddingPartyCard({ name, bio, image, delay, animation }) {
                 loading="lazy"
                 src={image}
                 alt={name}
-                className="w-48 h-48 object-cover mx-auto rounded-full"
+                className={`w-48 h-48 ${imageFit === "contain" ? "object-contain bg-white" : "object-cover"} mx-auto rounded-full`}
             />
             <h4 className="italic font-semibold text-xl pt-2">
                 {name}

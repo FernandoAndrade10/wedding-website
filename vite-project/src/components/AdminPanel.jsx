@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 import { FaStickyNote, FaCheckCircle } from "react-icons/fa";
 
 export default function AdminPanel() {
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    const configuredApiUrl = import.meta.env.VITE_API_URL?.trim();
+    const API_URL = (configuredApiUrl || (import.meta.env.DEV ? "http://localhost:5000" : "")).replace(/\/$/, "");
     const [rsvps, setRsvps] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('all');
@@ -49,12 +50,17 @@ export default function AdminPanel() {
         
         try {
             const res = await fetch(`${API_URL}/api/admin/rsvps`);
-            const data = await res.json();
+            const contentType = res.headers.get('content-type') || '';
+            const data = contentType.includes('application/json') ? await res.json() : null;
 
             if (!res.ok) {
-                throw new Error(data?.error || 'Failed to load RSVPs');
+                throw new Error(data?.error || `Failed to load RSVPs (${res.status})`);
             }
 
+            if (!data) {
+                throw new Error('Admin API did not return JSON. Check VITE_API_URL or backend routing.');
+            }
+            
             setRsvps(Array.isArray(data) ? data : []);
             setLoading(false);
         } catch (err) {

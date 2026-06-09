@@ -11,19 +11,22 @@ export default function About() {
       boldLetter: "W",
       p1: "e are beyond blessed to be surrounded by an incredible group of friends and family.",
       p2: "Meet the people who will be standing beside us on our big day.",
+      and: "and",
       padrinos: "Godparents",
-      padrinosBodaLaso: "Wedding and Lasso Godparents",
-      padrinosAras: "Wedding Coin Godparents",
-      padrinosBibliaRosario: "Bible and Rosary Godparents",
-      padrinosAnillosPastel: "Ring and Cake Godparents",
-      padrinosCopas: "Cup Godparents",
-      padrinosCojines: "Pillow Godparents",
-      padrinosBrindis: "Toast Godparents",
-      padrinosFotosVestido: "Photo and Dress Godparents",
-      padrinosDj: "DJ Godparents",
-      padrinosRecuerdosMisa: "Mass Souvenir Godparents",
-      madrinaRamoNatural: "Natural Bouquet Godparent",
-      padrinosRecuerdosSalon: "Reception Souvenir Godparents",
+      padrinosBodaLaso: "Wedding and Lasso Sponsors",
+      padrinosAras: "Wedding Coin Sponsors",
+      padrinosBibliaRosario: "Bible and Rosary Sponsors",
+      padrinosAnillosPastel: "Ring and Cake Sponsors",
+      padrinosCopas: "Cup Sponsors",
+      padrinosCojines: "Pillow Sponsors",
+      padrinosBrindis: "Toast Sponsors",
+      padrinosFotosVestido: "Photo and Dress Sponsors",
+      padrinosDj: "DJ Sponsors",
+      padrinosRecuerdosMisa: "Mass Souvenir Sponsors",
+      madrinaRamoNatural: "Natural Bouquet Sponsor",
+      padrinosRecuerdosSalon: "Reception Souvenir Sponsors",
+      padrinosMesaCentral: "Centerpiece Sponsor",
+      padrinosToiletries: "Guest Toiletries Sponsors",
       groomsmen: "Groomsmen",
       bridesmaids: "Bridesmaids",
     },
@@ -32,6 +35,7 @@ export default function About() {
       boldLetter: "N",
       p1: "os sentimos inmensamente bendecidos de estar rodeados por un grupo increíble de amigos y familiares.",
       p2: "Conoce a las personas que estarán a nuestro lado en este día tan especial.",
+      and: "y",
       padrinos: "Padrinos",
       padrinosBodaLaso: "Padrinos de Boda y Laso",
       padrinosAras: "Padrinos de Aras",
@@ -45,6 +49,9 @@ export default function About() {
       padrinosRecuerdosMisa: "Padrinos de Recuerdos de Misa",
       madrinaRamoNatural: "Madrina de Ramo Natural",
       padrinosRecuerdosSalon: "Padrinos de Recuerdos de Salon",
+      padrinosMesaCentral: "Padrino de Centro de Mesa",
+      MadrinaMesaCentral: "Madrina de Centro de Mesa",
+      padrinosToiletries: "Padrinos de Canastas de Baño",
       groomsmen: "Padrinos",
       bridesmaids: "Damas",
     }
@@ -60,9 +67,12 @@ export default function About() {
     { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/padrinos8.jpg' },
     { id: 8, name: 'Sergio and Arcadia', bioKey: 'padrinosFotosVestido', image: '/images/padrinos2.jpg' },
     { id: 9, name: 'Denise and Abraham', bioKey: 'padrinosDj', image: '/images/padrinos7.jpg' },
-    { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/placeholder4.jpg' },
-    { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/padrinos11.jpg' },
+    { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/padrinos13.jpg' },
+    { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/padrinos11.jpg', imageFit: 'contain' },
     { id: 12, name: 'Marlene and Marcos', bioKey: 'padrinosRecuerdosSalon', image: '/images/padrinos5.jpg' },
+    { id: 13, name: 'Eunice Gonzalez', bioKey: 'madrinaMesaCentral', image: '/images/padrinos5.jpg' },
+    { id: 14, name: 'Robert Gonzalez', bioKey: 'padrinosMesaCentral', image: '/images/padrinos5.jpg' },
+    { id: 15, name: 'Lisa and Abel', bioKey: 'padrinosToiletries', image: '/images/padrinos5.jpg' },
   ];
 
   const groomsmen = [
@@ -150,6 +160,7 @@ export default function About() {
                   image={p.image}
                   delay={getCardDelay(i)}
                   animation={cardAnimations[i % cardAnimations.length]}
+                  imageFit={p.imageFit}
                 />
               ))}
             </div>
