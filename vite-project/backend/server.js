@@ -184,29 +184,6 @@ const galleryUploadLimiter = createRouteRateLimiter({
     maxRequests: 12,
 });
 
-function getAdminToken(req) {
-    const authHeader = req.headers.authorization || '';
-    const bearer = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
-    const headerToken = String(req.headers['x-admin-key'] || '').trim();
-    return bearer || headerToken;
-}
-
-function requireAdminAuth(req, res, next) {
-    const expected = String(process.env.ADMIN_SECRET || '').trim();
-
-    if (!expected) {
-        return res.status(503).json({ error: 'ADMIN_NOT_CONFIGURED' });
-    }
-
-    const provided = getAdminToken(req);
-    if (!provided || provided !== expected) {
-        return res.status(401).json({ error: 'UNAUTHORIZED_ADMIN' });
-    }
-
-    return next();
-}
-
-
 // Test route
 app.get('/', (req, res) => {
     res.send('Server is up and running!');
@@ -416,7 +393,7 @@ app.get('/api/admin/rsvps', requireAdminAuth, async (req, res) => {
 });
 
 // Admin RSVP Deletion
-app.delete('/api/admin/rsvp/:id', requireAdminAuth, async (req, res) => {
+app.delete('/api/admin/rsvp/:id', async (req, res) => {
     const rsvpId = req.params.id;
 
     try {
@@ -436,7 +413,7 @@ app.delete('/api/admin/rsvp/:id', requireAdminAuth, async (req, res) => {
 });
 
 // Admin RSVP Edit
-app.put('/api/admin/rsvps/:id', requireAdminAuth, async (req, res) => {
+app.put('/api/admin/rsvps/:id', async (req, res) => {
     const { id } = req.params;
     const { phone, attending, dinner, contacted, notes } = req.body;
 

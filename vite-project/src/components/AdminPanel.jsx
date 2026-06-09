@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { FaStickyNote, FaCheckCircle } from "react-icons/fa";
 
@@ -10,15 +10,9 @@ export default function AdminPanel() {
     const [editEntry, setEditEntry] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortOption, setSortOption] = useState('name-asc');
-    const [adminToken, setAdminToken] = useState(localStorage.getItem('adminToken') || '');
     
     const headers = ["Name", "Phone", "Attending", "Dinner", "IndividualAttendance"];
 
-    const authHeaders = useMemo(() => ({
-        "Content-Type": "application/json",
-        "x-admin-key": adminToken,
-    }), [adminToken]);
-    
     const rows = rsvps.map((entry) => [
         entry.name,
         entry.phone,
@@ -54,7 +48,7 @@ export default function AdminPanel() {
         setLoading(true);
         
         try {
-            const res = await fetch(`${API_URL}/api/admin/rsvps`, { headers: authHeaders });
+            const res = await fetch(`${API_URL}/api/admin/rsvps`);
             const data = await res.json();
 
             if (!res.ok) {
@@ -68,7 +62,7 @@ export default function AdminPanel() {
             toast.error(err.message || 'Error loading RSVPs');
             setLoading(false);
         }
-    }, [API_URL, authHeaders]);
+    }, [API_URL]);
     
     useEffect(() => {
         fetchRsvps();
@@ -207,7 +201,6 @@ export default function AdminPanel() {
         try {
             const res = await fetch(`${API_URL}/api/admin/rsvp/${rsvpId}`,{
                 method: 'DELETE',
-                headers: { 'x-admin-key': adminToken },
             });
 
             const data = await res.json();
@@ -235,7 +228,7 @@ export default function AdminPanel() {
         try {
             const response = await fetch(`${API_URL}/api/admin/rsvps/${editEntry.id}`, {
                 method: 'PUT',
-                headers: authHeaders,
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(editEntry),
             });
 
@@ -265,23 +258,12 @@ export default function AdminPanel() {
                 RSVP Admin Panel
             </h2>
 
-            <div className="relative mb-4 bg-white/85 p-3 rounded-lg shadow max-w-xl">
-                <p className="text-sm text-gray-700 mb-2">Admin access key</p>
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <input
-                        type="password"
-                        value={adminToken}
-                        onChange={(e) => {
-                            const value = e.target.value;
-                            setAdminToken(value);
-                            localStorage.setItem('adminToken', value);
-                        }}
-                        className="w-full p-2 rounded border"
-                        placeholder="Enter admin key"
-                    />
-                    <button className="px-3 py-2 bg-mauve text-white rounded" onClick={fetchRsvps}>Refresh</button>
-                </div>
-            </div>
+            <button
+                className="relative mb-4 px-3 py-2 bg-mauve text-white rounded"
+                onClick={fetchRsvps}
+            >
+                Refresh RSVPs
+            </button>
 
             <div className="relative mb-4 flex flex-wrap gap-2">
                 <button

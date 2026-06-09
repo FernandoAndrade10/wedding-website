@@ -54,14 +54,14 @@ export default function About() {
     { id: 1, name: 'Sal and Tania', bioKey: 'padrinosBodaLaso', image: '/images/padrinos4.jpg' },
     { id: 2, name: 'Francisco and Rosi', bioKey: 'padrinosAras', image: '/images/padrinos1.jpg' },
     { id: 3, name: 'Gerardo and Patricia', bioKey: 'padrinosBibliaRosario', image: '/images/padrinos9.jpg' },
-    { id: 4, name: 'Joel and Araceli', bioKey: 'padrinosAnillosPastel', image: '/images/placeholder4.jpg' },
+    { id: 4, name: 'Joel and Araceli', bioKey: 'padrinosAnillosPastel', image: '/images/padrinos12.jpg' },
     { id: 5, name: 'Jorge and Claudia', bioKey: 'padrinosCopas', image: '/images/padrinos3.jpg' },
-    { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/placeholder2.jpg' },
+    { id: 6, name: 'Marta and Tony', bioKey: 'padrinosCojines', image: '/images/padrinos10.jpg' },
     { id: 7, name: 'Maria and Patricio', bioKey: 'padrinosBrindis', image: '/images/padrinos8.jpg' },
     { id: 8, name: 'Sergio and Arcadia', bioKey: 'padrinosFotosVestido', image: '/images/padrinos2.jpg' },
     { id: 9, name: 'Denise and Abraham', bioKey: 'padrinosDj', image: '/images/padrinos7.jpg' },
     { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/placeholder4.jpg' },
-    { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/placeholder3.jpg' },
+    { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/padrinos11.jpg' },
     { id: 12, name: 'Marlene and Marcos', bioKey: 'padrinosRecuerdosSalon', image: '/images/padrinos5.jpg' },
   ];
 
@@ -73,7 +73,7 @@ export default function About() {
     { id: 5, name: 'Dante', image: '/images/dante.jpg' },
     { id: 6, name: 'Matthew', image: '/images/matthew.jpg' },
     { id: 7, name: 'Anthony', image: '/images/tono.jpg' },
-    { id: 8, name: 'Dereck', image: '/images/derick.jpg' },
+    { id: 8, name: 'Derick', image: '/images/derick.jpg' },
     { id: 9, name: 'Andres', image: '/images/Andres.jpg' },
     { id: 10, name: 'Aaron', image: '/images/aaron.jpg' },
   ];
