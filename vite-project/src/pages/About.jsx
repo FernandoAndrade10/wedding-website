@@ -26,6 +26,7 @@ export default function About() {
       madrinaRamoNatural: "Natural Bouquet Sponsor",
       padrinosRecuerdosSalon: "Reception Souvenir Sponsors",
       padrinosMesaCentral: "Centerpiece Sponsor",
+      madrinaMesaCentral: "Centerpiece Sponsor",
       padrinosToiletries: "Guest Toiletries Sponsors",
       groomsmen: "Groomsmen",
       bridesmaids: "Bridesmaids",

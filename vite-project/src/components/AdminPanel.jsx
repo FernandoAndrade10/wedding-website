@@ -174,6 +174,14 @@ export default function AdminPanel() {
             (acc, entry) => {
                 const individualAttendance = entry.individual_attendance;
 
+                if (entry.attending === true || entry.attending === 'yes') {
+                    acc.rsvp += 1;
+                }
+
+                if (entry.dinner === true || entry.dinner === 'yes') {
+                    acc.dinner += 1;
+                }
+                
                 if (
                     individualAttendance
                     && typeof individualAttendance === 'object'
@@ -182,14 +190,6 @@ export default function AdminPanel() {
                     const guests = Object.values(individualAttendance);
                     acc.rsvp += guests.filter((guest) => guest?.rsvp === 'yes').length;
                     acc.dinner += guests.filter((guest) => guest?.dinner === 'yes').length;
-                    return acc;
-                }
-                if (entry.attending === true || entry.attending === 'yes') {
-                            acc.rsvp += 1;
-                }
-
-                if (entry.dinner === true || entry.dinner === 'yes') {
-                        acc.dinner += 1;
                 }
                 return acc;
             },
