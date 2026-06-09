@@ -50,7 +50,7 @@ export default function About() {
       madrinaRamoNatural: "Madrina de Ramo Natural",
       padrinosRecuerdosSalon: "Padrinos de Recuerdos de Salon",
       padrinosMesaCentral: "Padrino de Centro de Mesa",
-      MadrinaMesaCentral: "Madrina de Centro de Mesa",
+      madrinaMesaCentral: "Madrina de Centro de Mesa",
       padrinosToiletries: "Padrinos de Canastas de Baño",
       groomsmen: "Padrinos",
       bridesmaids: "Damas",
@@ -70,9 +70,9 @@ export default function About() {
     { id: 10, name: 'Armida and Manny', bioKey: 'padrinosRecuerdosMisa', image: '/images/padrinos13.jpg' },
     { id: 11, name: 'Conchis', bioKey: 'madrinaRamoNatural', image: '/images/padrinos11.jpg', imageFit: 'contain' },
     { id: 12, name: 'Marlene and Marcos', bioKey: 'padrinosRecuerdosSalon', image: '/images/padrinos5.jpg' },
-    { id: 13, name: 'Eunice Gonzalez', bioKey: 'madrinaMesaCentral', image: '/images/padrinos5.jpg' },
-    { id: 14, name: 'Robert Gonzalez', bioKey: 'padrinosMesaCentral', image: '/images/padrinos5.jpg' },
-    { id: 15, name: 'Lisa and Abel', bioKey: 'padrinosToiletries', image: '/images/padrinos5.jpg' },
+    { id: 13, name: 'Eunice Gonzalez', bioKey: 'madrinaMesaCentral', image: '/images/padrinos14.jpg' },
+    { id: 14, name: 'Robert Gonzalez', bioKey: 'padrinosMesaCentral', image: '/images/padrinos15.jpg' },
+    { id: 15, name: 'Lisa and Abel', bioKey: 'padrinosToiletries', image: '/images/padrinos6.jpg' },
   ];
 
   const groomsmen = [
@@ -90,6 +90,7 @@ export default function About() {
 
   const cardAnimations  = ['flip-left', 'flip-right', 'zoom-in', 'fade-up'];
   const getCardDelay = (index) => Math.min(index * 60 + 40, 280);
+  const getPadrinoName = (name) => language === 'es' ? name.replace(/ and /g, ' y ') : name;
 
   const bridesmaids = [
     { id: 1, name: 'Natalie' , image: '/images/nat.jpg' },
@@ -155,7 +156,7 @@ export default function About() {
               {padrinos.map((p, i) => (
                 <WeddingPartyCard 
                   key={p.id}
-                  name={p.name}
+                  name={getPadrinoName(p.name)}
                   bio={partyText[language][p.bioKey]}
                   image={p.image}
                   delay={getCardDelay(i)}
