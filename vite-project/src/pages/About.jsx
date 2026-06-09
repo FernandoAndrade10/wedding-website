@@ -17,7 +17,7 @@ export default function About() {
       padrinosAras: "Wedding Coin Sponsors",
       padrinosBibliaRosario: "Bible and Rosary Sponsors",
       padrinosAnillosPastel: "Ring and Cake Sponsors",
-      padrinosCopas: "Cup Sponsors",
+      padrinosCopas: "Champagne Flute Sponsors",
       padrinosCojines: "Pillow Sponsors",
       padrinosBrindis: "Toast Sponsors",
       padrinosFotosVestido: "Photo and Dress Sponsors",
