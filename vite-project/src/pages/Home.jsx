@@ -21,6 +21,8 @@ export default function Home() {
       reception: "Reception",
       location_link: "View directions and venue information.",
       time: "Time",
+      date: "Date &",
+      date_info: "Saturday, August 8, 2026",
       ceremony_time: "Ceremony begins at 12:30 PM",
       reception_time: "Reception to follow at 5:30 PM",
       faq: "View FAQ",
@@ -43,6 +45,8 @@ export default function Home() {
       reception: "Recepción",
       location_link: "Ver direcciones e información del lugar.",
       time: "Tiempo",
+      date: "Fecha y",
+      date_info: "Sábado, 8 de agosto de 2026",
       ceremony_time: "La ceremonia comienza a las 12:30 PM",
       reception_time: "La celebración de la recepción es a las 5:30 PM",
       faq: "Ver las preguntas frecuentes",
@@ -156,15 +160,15 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              {/* Time */}
+              {/* Date and Time */}
               <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="200">
                 <FaClock className="text-mauve w-6 h-6 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800">
-                    {homeText[language].time}
+                    {homeText[language].date} {homeText[language].time}
                   </h3>
                   <p className="text-gray-600">
-                    {homeText[language].ceremony_time}<br /> {homeText[language].reception_time}
+                    {homeText[language].date_info} <br /> {homeText[language].ceremony_time} <br /> {homeText[language].reception_time}
                   </p>
                   <Link to="/faq" className="text-peach underline hover:text-peach/80">
                       {homeText[language].faq}
