@@ -167,8 +167,11 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-gray-800">
                     {homeText[language].date} {homeText[language].time}
                   </h3>
+                  <p className="text-sage">
+                    <em>{homeText[language].date_info}</em>
+                  </p>
                   <p className="text-gray-600">
-                    {homeText[language].date_info} <br /> {homeText[language].ceremony_time} <br /> {homeText[language].reception_time}
+                    {homeText[language].ceremony_time} <br /> {homeText[language].reception_time}
                   </p>
                   <Link to="/faq" className="text-peach underline hover:text-peach/80">
                       {homeText[language].faq}
