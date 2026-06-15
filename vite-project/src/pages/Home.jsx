@@ -167,7 +167,7 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-gray-800">
                     {homeText[language].date} {homeText[language].time}
                   </h3>
-                  <p className="text-sage">
+                  <p className="text-sage font-semibold text-lg">
                     <em>{homeText[language].date_info}</em>
                   </p>
                   <p className="text-gray-600">
