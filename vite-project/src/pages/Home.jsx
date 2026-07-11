@@ -25,6 +25,7 @@ export default function Home() {
       date_info: "Saturday, August 8, 2026",
       ceremony_time: "Ceremony begins at 12:30 PM",
       reception_time: "Reception to follow at 5:30 PM",
+      dinner_time: "Dinner from 6 PM to 7 PM",
       faq: "View FAQ",
       dress: "Dress Code",
       dress_details: "Garden formal attire is requested.",
@@ -49,6 +50,7 @@ export default function Home() {
       date_info: "Sábado, 8 de agosto de 2026",
       ceremony_time: "La ceremonia comienza a las 12:30 PM",
       reception_time: "La celebración de la recepción es a las 5:30 PM",
+      dinner_time: "Cena de 6 PM a 7 PM",
       faq: "Ver las preguntas frecuentes",
       dress: "Código de Vestimenta",
       dress_details: "Se solicita vestimenta garden formal.",
@@ -171,7 +173,7 @@ export default function Home() {
                     <em>{homeText[language].date_info}</em>
                   </p>
                   <p className="text-gray-600">
-                    {homeText[language].ceremony_time} <br /> {homeText[language].reception_time}
+                    {homeText[language].ceremony_time} <br /> {homeText[language].reception_time} <br /> {homeText[language].dinner_time}
                   </p>
                   <Link to="/faq" className="text-peach underline hover:text-peach/80">
                       {homeText[language].faq}

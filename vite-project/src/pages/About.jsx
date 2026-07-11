@@ -53,7 +53,7 @@ export default function About() {
       padrinosMesaCentral: "Padrino de Centro de Mesa",
       madrinaMesaCentral: "Madrina de Centro de Mesa",
       padrinosToiletries: "Padrinos de Canastas de Baño",
-      groomsmen: "Padrinos",
+      groomsmen: "Caballeros",
       bridesmaids: "Damas",
     }
   }
